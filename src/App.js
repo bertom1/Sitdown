@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TopNav from "./components/TopNav";
 import { EventCard } from './components/Event Card';
+import BottomNav from './components/BottomNav';
 // import Dogs from "./pages/Dogs";
 // import Cats from "./pages/Cats";
 // import Sheeps from "./pages/Sheeps";
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <TopNav />
         <EventCard />
+        <BottomNav />
         {/* <Switch> */}
         {/* <Route path="/" exact component={Home} />
           <Route path="/" component={Cats} />
