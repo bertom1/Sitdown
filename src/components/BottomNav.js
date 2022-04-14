@@ -1,37 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import {AiOutlinePlusCircle} from "react-icons/ai"
+import {GrHomeRounded} from "react-icons/gr";
+import { BsChatLeftDots } from "react-icons/bs";
 
 const BottomNav = () => {
   return (
-    <nav class="bg-transparent border-gray-200 mx-1.5 my-1.5 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-      <div class="container flex flex-wrap justify-between items-center mx-auto">
-      
-        <div>
-      
-          <li>
-       <Link to="/">home</Link>
-         
-          </li>
-   
-          <li>
-          <Link to="/add">add</Link>
-            {" "}
-          </li>
-        
-          <li>
-            <Link to="/chat">chat</Link>
-           
-          </li>
-     
-          <li>
-             <Link to="/profile">profile</Link>
-          
-          </li>
-        
+    <div class="w-full h-screen">
+      <nav
+        id="bottom-nav"
+        class="container block fixed inset-x-0 bottom-0 py-2 z-10 bg-pink"
+      >
+        <div id="tabs" class="flex justify-between">
+          <Link
+            to="/"
+            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
+          >
+            <GrHomeRounded size={25} class="inline-block mb-1 object-center" />
+            <span class="tab tab-kategori block text-xs">home</span>
+          </Link>
+
+          <Link
+            to="/add"
+            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
+          >
+            <AiOutlinePlusCircle
+              size={25}
+              class="inline-block mb-1 object-center"
+            />
+            <span class="tab tab-kategori block text-xs">add event</span>
+          </Link>
+
+          <Link
+            to="/chat"
+            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
+          >
+            <BsChatLeftDots size={25} class="inline-block mb-1 object-center" />
+            <span class="tab tab-kategori block text-xs">chat</span>
+          </Link>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 export default BottomNav;
