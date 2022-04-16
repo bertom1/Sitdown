@@ -1,5 +1,6 @@
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import Celebration from '../../image/celebration.svg'
+import '../Event Card/EventCard.css'
 
 //replace hardcoded text with data from mock DB
 const InviteCard = () => {
