@@ -6,10 +6,10 @@ import Celebration from '../../image/celebration.svg'
 import './EventCard.css'
 
 //replace hardcoded text with data from mock DB
-const EventCard = () => {
+const EventCard = ({event}) => {
     return <div className='w-full h-40 border-2 border-black rounded-xl px-2 mb-2 active:bg-gray-400 hover:cursor-pointer'>
         <div className='flex relative justify-center'>
-            <h3 className=''>Filler</h3>
+            <h3 className=''>{event.title}</h3>
             <BsThreeDotsVertical size={22} className='absolute right-2 top-0.5 ' />
         </div>
         <div className='flex'>
@@ -18,13 +18,13 @@ const EventCard = () => {
             </div>
             <div className='w-full h-full mx-2'>
                 <div className=''>
-                    <p className='text-left leading-tight line-clamp'>Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ip has been the industry's standard dummy text ever since the 1500s
+                    <p className='h-16 text-left leading-tight line-clamp'>Description: 
+                        {event.description || 'No description'}
                     </p>
                 </div>
                 <div className='text-left'>
-                    <p>Date: 00/00/0000</p>
-                    <p>Time: 00:00pm</p>
+                    <p>Date: {event.date}</p>
+                    <p>Time: {event.time}</p>
                 </div>
             </div>
         </div>
