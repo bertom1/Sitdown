@@ -1,8 +1,21 @@
 import Celebration from '../../image/celebration.svg'
 import { AiOutlineClose } from 'react-icons/ai'
+import { GoogleMap, Marker } from '@react-google-maps/api'
 
 const EventPage = ({event}) => {
     //dummy data
+    const Map = ({loc}) => 
+    {return <GoogleMap 
+            mapContainerStyle={{
+                height: "125px",
+                width: "275px"
+            }}
+            center={loc}
+            zoom={16}
+            >
+                <Marker position={loc} />
+            </GoogleMap>
+    }
     const e = {
         id: 0,
         title: `Random Event`,
@@ -10,6 +23,8 @@ const EventPage = ({event}) => {
         time: '00:00',
         guests: [{name: 'John', items:['Avocado', 'forks']}, {name: 'Dylan', items: ['banana', 'something random']}],
         items: ['cups', 'plates', 'doughnuts'],
+        address:'1600 Pennsylvania Avenue NW, Washington, DC 20500',
+        geolocation:{lat: 38.8977, long: 77.0365},
         description: `Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ip has been the industry's standard dummy text ever since the 1500s`
     }
@@ -21,7 +36,10 @@ const EventPage = ({event}) => {
             <p>{event.title}</p>
             <p>{event.date}</p>
             <p>{event.time}</p>
-            <p>Location</p>
+            <div className='flex flex-col align-center overflow-visible'>
+            <p>{event.address}</p>
+            <Map loc={event.geolocation} />
+            </div>
         </div>
         <div>
             <p>My Items: </p>
