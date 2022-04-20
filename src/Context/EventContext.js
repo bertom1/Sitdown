@@ -32,6 +32,7 @@ export const EventProvider = ({children}) => {
         date: '10/11/2022',
         time: '19:00',
         guests: 'Chelsea, Aseeb',
+        items: ['cups', 'plates', 'doughnuts'],
         description: `Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ip has been the industry's standard dummy text ever since the 1500s`
     }])
