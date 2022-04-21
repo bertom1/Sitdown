@@ -1,0 +1,39 @@
+.indexedStep {
+    color: white;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    background-color: rgba(211, 211, 211, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px, solid, black;
+}
+
+/* instead change it to active/nonactive step... */
+.indexedStep.accomplished {
+    color: rgb(0, 0, 0);
+    background-color: #FFB7B7;
+    border: 10px, solid , black;
+   
+}
+
+ul{
+display: flex;
+align-items: stretch;
+/* Default */
+justify-content: space-between;
+width: 100%;
+/* background: #cacaca; */
+margin: 0;
+padding: 0;
+}
+li{
+    display: block;
+    flex: 0 1 auto;
+    margin-right: 3px;
+    /* Default */
+    list-style-type: none;
+    background: #fafafa;
+}

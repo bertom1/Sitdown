@@ -1,10 +1,12 @@
-import './App.css';
+import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TopNav from "./components/TopNav";
-import BottomNav from './components/BottomNav';
-import { EventContainer } from './components/Event Container';
-import { EventProvider, InviteProvider } from './Context/EventContext';
-import { LoadScript } from '@react-google-maps/api';
+import { EventCard } from "./components/Event Card";
+import BottomNav from "./components/BottomNav";
+import AddPage from "./pages/AddPage";
+import { EventContainer } from "./components/Event Container";
+import { EventProvider, InviteProvider } from "./Context/EventContext";
+import { LoadScript } from "@react-google-maps/api";
 // import Dogs from "./pages/Dogs";
 // import Cats from "./pages/Cats";
 // import Sheeps from "./pages/Sheeps";
@@ -36,13 +38,14 @@ function App() {
             <EventContainer />
           </InviteProvider>
         </EventProvider>
-        <BottomNav />
+        
         {/* <Switch> */}
         {/* <Route path="/" exact component={Home} />
           <Route path="/" component={Cats} />
           <Route path="/" component={Sheeps} />
           <Route path="/goats" component={Goats} /> */}
         {/* </Switch> */}
+        <BottomNav />
       </Router>
       </LoadScript>
     </div>
