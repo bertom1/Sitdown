@@ -32,13 +32,15 @@ const EventPage = ({event}) => {
     const dummyDate = ['Nachos', 'item', 'Cats']
     return <div>
         <img className='mx-auto' src={Celebration} alt='celebration'/>
-        <div className='text-center'>
+        <div className='text-center '>
             <p>{event.title}</p>
             <p>{event.date}</p>
             <p>{event.time}</p>
             <div className='flex flex-col align-center overflow-visible'>
             <p>{event.address}</p>
-            <Map loc={event.geolocation} />
+            <div className='m-auto'>
+                <Map  loc={event.geolocation} />
+            </div>
             </div>
         </div>
         <div>
