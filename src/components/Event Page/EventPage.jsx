@@ -11,7 +11,7 @@ const EventPage = ({event}) => {
                 width: "275px"
             }}
             center={loc}
-            zoom={16}
+            zoom={15}
             >
                 <Marker position={loc} />
             </GoogleMap>
