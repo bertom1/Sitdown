@@ -4,15 +4,15 @@ import Celebration from '../../image/celebration.svg'
 import '../Event Card/EventCard.css'
 
 //replace hardcoded text with data from mock DB
-const InviteCard = ({invite}) => {
-    const {addInv, delInv} = useInvite()
+const InviteCard = ({invite, id}) => {
+    const {delInv} = useInvite()
     const {addEvent} = useEvent()
     const handleAdd = () => {
         addEvent(invite)
-        delInv(invite.id)
+        delInv(id)
     }
     const handleDelete = () => {
-        delInv(invite.id)
+        delInv(id)
     }
     return <div className='w-full h-48 border-2 border-black rounded-xl px-2 mb-2'>
         <div className='flex relative justify-center'>

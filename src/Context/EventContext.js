@@ -5,9 +5,6 @@ import React, {useContext, useState} from 'react'
  * via destructuring with a call to the useEvent hook.
  * ex. Const {addEvent, delEvent} = useEvent()
  */
-var evCounter = 1;
-var invCounter = 1;
-
 const EventContext = React.createContext({events: [], 
     addEvent: () => {}, 
     delEvent: () => {} })
@@ -27,19 +24,21 @@ export function useInvite() {
 
 export const EventProvider = ({children}) => {
     let [events, setEvents] = useState([{
-        id: 0,
         title: `Rachel's birthday`,
         date: '10/11/2022',
         time: '19:00',
-        guests: 'Chelsea, Aseeb',
+        myItems: ['Nachos', 'item', 'Cats'],
+        guests: [{name: 'John', items:['Avocado', 'forks']}, {name: 'Dylan', items: ['banana', 'something random']}],
         items: ['cups', 'plates', 'doughnuts'],
         description: `Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-        Lorem Ip has been the industry's standard dummy text ever since the 1500s`
+        Lorem Ip has been the industry's standard dummy text ever since the 1500s`,
+        address:'1600 Pennsylvania Avenue NW, Washington, DC 20500',
+        geolocation:{lat: 38.8977, lng: -77.0365},
     }])
     const contextVals = {
         events: events,
-        addEvent: (e) => setEvents([...events, {...e, id:evCounter++}]),
-        delEvent: (targetId) => setEvents(events.filter((item) => item.id !== targetId))
+        addEvent: (e) => setEvents([...events, e]),
+        delEvent: (targetIndex) => setEvents(events.filter((item, index) => index !== targetIndex))
     }
     return <EventContext.Provider value={contextVals} >
         {children}
@@ -48,17 +47,20 @@ export const EventProvider = ({children}) => {
 
 export const InviteProvider = ({children}) => {
     let [invites, setInvites] = useState([{
-        id: 0,
         title: `Random Event`,
         date: '01/01/2023',
         time: '12:00',
-        guests: 'Chelsea, Aseeb',
+        myItems: [],
+        guests: [{name: 'John', items:['Avocado', 'forks']}, {name: 'Dylan', items: ['banana', 'something random']}],
+        items: ['cups', 'plates', 'doughnuts'],
+        address:'1600 Pennsylvania Avenue NW, Washington, DC 20500',
+        geolocation:{lat: 38.8977, lng: -77.0365},
         description: `Random event placeholder used for testing`
     }])
     const contextVals = {
         invites: invites,
-        addInv: (e) => setInvites([...invites, {...e, id:invCounter++}]),
-        delInv: (targetId) => setInvites(invites.filter((item) => item.id !== targetId))
+        addInv: (e) => setInvites([...invites, e]),
+        delInv: (targetIndex) => setInvites(invites.filter((item, index) => index !== targetIndex))
     }
     return <InviteContext.Provider value={contextVals} >
         {children}

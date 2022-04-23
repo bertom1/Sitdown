@@ -9,7 +9,6 @@ const EventContainer = () => {
     const [toggleInvite, setToggleInvite] = useState(false)
     const {events} = useEvent()
     const {invites} = useInvite()
-    console.log(events)
     return <div>
         <div className='ml-2 flex items-center py-1' onClick={() => setToggleInvite(!toggleInvite)}>
             {toggleInvite ?
@@ -23,7 +22,7 @@ const EventContainer = () => {
         </div>
         {toggleInvite && <div>
             {invites.length > 0 ? invites.map((inv, index) => {
-                return <InviteCard key={index} invite={inv} />
+                return <InviteCard key={index} invite={inv} id={index} />
             })
             :
             <p>No Invites to display</p>
@@ -32,7 +31,7 @@ const EventContainer = () => {
         }
         {
         events.map((ev, index) => {
-            return <EventCard key={index} event={ev} />
+            return <EventCard key={index} event={ev} id={index} />
         })
         }
     </div>

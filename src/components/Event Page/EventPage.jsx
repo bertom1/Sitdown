@@ -1,9 +1,30 @@
 import Celebration from '../../image/celebration.svg'
-import { AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai'
 import { GoogleMap, Marker } from '@react-google-maps/api'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useEvent } from '../../Context/EventContext'
 
-const EventPage = ({event}) => {
-    //dummy data
+const EventPage = () => {
+    const e = {
+        title: `Loading event`,
+        date: 'mm/dd/yyyy',
+        time: 'hh:mm',
+        guests: [],
+        myItems: [],
+        items: [],
+        address:'loading address',
+        geolocation:{lat: 0, lng: 0},
+        description: `...`
+    }
+    const {events, delEvent } = useEvent()
+    let { id } = useParams()
+    id = Number(id)
+    const [event, setEvent] = useState(e)
+    useEffect(() => {
+        setEvent(events[id])
+    }, [events, id])
+    console.log(event)
     const Map = ({loc}) => 
     {return <GoogleMap 
             mapContainerStyle={{
@@ -16,28 +37,32 @@ const EventPage = ({event}) => {
                 <Marker position={loc} />
             </GoogleMap>
     }
-    const e = {
-        id: 0,
-        title: `Random Event`,
-        date: '00/00/0000',
-        time: '00:00',
-        guests: [{name: 'John', items:['Avocado', 'forks']}, {name: 'Dylan', items: ['banana', 'something random']}],
-        items: ['cups', 'plates', 'doughnuts'],
-        address:'1600 Pennsylvania Avenue NW, Washington, DC 20500',
-        geolocation:{lat: 38.8977, long: 77.0365},
-        description: `Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-        Lorem Ip has been the industry's standard dummy text ever since the 1500s`
+    const formatAddr = (addr) => {
+        const firstComma = addr.indexOf(',')
+        const street = addr.substring(0, firstComma)
+        const rest = addr.substring(firstComma + 1, addr.length)
+        return <p>
+            {street} <br />
+            {rest}
+        </p>
     }
-
-    const dummyDate = ['Nachos', 'item', 'Cats']
     return <div>
         <img className='mx-auto' src={Celebration} alt='celebration'/>
-        <div className='text-center '>
+        <div className='text-center flex flex-col justify-center'>
             <p>{event.title}</p>
-            <p>{event.date}</p>
-            <p>{event.time}</p>
-            <div className='flex flex-col align-center overflow-visible'>
-            <p>{event.address}</p>
+            <div className='flex justify-center'>
+                <AiOutlineCalendar size={18} className='mt-1 mr-2' />
+                <p>{event.date}</p>
+            </div>
+            <div className='flex justify-center' >
+                <AiOutlineClockCircle size={18} className='mt-1 mr-2' />
+                <p>{event.time}</p>
+            </div>
+            <div className='flex flex-col '>
+            <div className='flex justify-center' >
+                <AiOutlineClockCircle size={18} className='mt-1 mr-1' />
+                {formatAddr(event.address)}
+            </div>
             <div className='m-auto'>
                 <Map  loc={event.geolocation} />
             </div>
@@ -58,7 +83,7 @@ const EventPage = ({event}) => {
                 </select>
                 <div className='flex justify-center mt-4'>
                     {
-                        dummyDate.map((item, index) => {
+                        event.myItems.map((item, index) => {
                             return <div key={index} className='bg-gray-400 rounded-xl pl-2 pr-5 py-2 mx-1 relative'>
                                     {item}
                                     <AiOutlineClose size={12} className='absolute top-1 right-0.5 mr-0.5' />

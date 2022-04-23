@@ -1,12 +1,13 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TopNav from "./components/TopNav";
-import { EventCard } from "./components/Event Card";
 import BottomNav from "./components/BottomNav";
 import AddPage from "./pages/AddPage";
 import { EventContainer } from "./components/Event Container";
 import { EventProvider, InviteProvider } from "./Context/EventContext";
 import { LoadScript } from "@react-google-maps/api";
+import { EventPage } from "./components/Event Page";
+import { InvitePage } from './components/Invite Page'
 // import Dogs from "./pages/Dogs";
 // import Cats from "./pages/Cats";
 // import Sheeps from "./pages/Sheeps";
@@ -28,27 +29,27 @@ const e = {
 };
 
 function App() {
+  const scriptLibraries = ["places"]
   return (
     <div className="App">
-      <LoadScript googleMapsApiKey="secret-API-key" libraries={["places"]}>
-        <BrowserRouter>
-          <TopNav />
+      <LoadScript googleMapsApiKey="AIzaSyAuFzEe4kobTk82fqLz3Qz3UyIPhfKX1nk" libraries={scriptLibraries}>
+      <EventProvider>
+        <InviteProvider>
+          <BrowserRouter>
+            <TopNav />
+            <Routes>
+              <Route path="/" element={<EventContainer />}/>
+                <Route path='/event/:id' element={<EventPage />} />
+              <Route path='/invite/:id' element={<InvitePage />} />
+              <Route path="/add" element={<AddPage/>} />
+              <Route path="/chat" element={<></>}/>
+              <Route path="/profile" element={<></>}/>
+            </Routes>
 
-          <Routes>
-            <Route path="/" element={ 
-              <EventProvider>
-                <InviteProvider>
-                  <EventContainer />
-                </InviteProvider>
-              </EventProvider>
-              }/>
-            <Route path="/add" element={<AddPage/>} />
-            <Route path="/chat" element={<></>}/>
-            <Route path="/profile" element={<></>}/>
-          </Routes>
-
-          <BottomNav />
-        </BrowserRouter>
+            <BottomNav />
+          </BrowserRouter>
+        </InviteProvider>
+      </EventProvider>
       </LoadScript>
     </div>
   );
