@@ -32,24 +32,27 @@ function App() {
   const scriptLibraries = ["places"]
   return (
     <div className="App">
-      <LoadScript googleMapsApiKey="AIzaSyAuFzEe4kobTk82fqLz3Qz3UyIPhfKX1nk" libraries={scriptLibraries}>
-      <EventProvider>
-        <InviteProvider>
-          <BrowserRouter>
-            <TopNav />
-            <Routes>
-              <Route path="/" element={<EventContainer />}/>
-                <Route path='/event/:id' element={<EventPage />} />
-              <Route path='/invite/:id' element={<InvitePage />} />
-              <Route path="/add" element={<AddPage/>} />
-              <Route path="/chat" element={<></>}/>
-              <Route path="/profile" element={<></>}/>
-            </Routes>
+      <LoadScript
+        googleMapsApiKey="AIzaSyAuFzEe4kobTk82fqLz3Qz3UyIPhfKX1nk"
+        libraries={scriptLibraries}
+      >
+        <EventProvider>
+          <InviteProvider>
+            <BrowserRouter>
+              <TopNav />
+              <Routes>
+                <Route path="/" element={<EventContainer />} />
+                <Route path="/event/:id" element={<EventPage />} />
+                <Route path="/invite/:id" element={<InvitePage />} />
+                <Route path="/add" element={<AddPage />} />
+                <Route path="/chat" element={<></>} />
+                <Route path="/profile" element={<></>} />
+              </Routes>
 
-            <BottomNav />
-          </BrowserRouter>
-        </InviteProvider>
-      </EventProvider>
+              <BottomNav />
+            </BrowserRouter>
+          </InviteProvider>
+        </EventProvider>
       </LoadScript>
     </div>
   );

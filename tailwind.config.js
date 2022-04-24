@@ -7,7 +7,8 @@ module.exports = {
       //move colors to extend so that default tailwind colors are available
       colors:{
         'pink': '#FFB7B7',
-        'green': '#4caf50',
+        'lightpink': '#ffe3e3',
+        'green': '#4caf50'
       },
     },
     
