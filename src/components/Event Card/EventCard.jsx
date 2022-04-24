@@ -2,16 +2,29 @@
 //Include details about the event and each card should take its respective detailed event page
 
 import { BsThreeDotsVertical } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { Menu, MenuItem, MenuButton, MenuGroup } from '@szhsin/react-menu'
+import "@szhsin/react-menu/dist/index.css";
 import Celebration from '../../image/celebration.svg'
 import './EventCard.css'
+import { useEvent } from '../../Context/EventContext';
 
 const EventCard = ({event, id}) => {
-    return <div className='w-full h-40 border-2 border-black rounded-xl px-2 mb-2 active:bg-gray-400 hover:cursor-pointer'>
-        <Link to={`/event/${id}`} >
-            <div className='flex relative justify-center'>
-                <h3 className=''>{event.title}</h3>
-                <BsThreeDotsVertical size={22} className='absolute right-2 top-0.5 ' />
+    const nav = useNavigate()
+    const {delEvent} = useEvent()
+    const layerButton = (e) => {
+        e.stopPropagation()
+    }
+    return <div onClick={()=>nav(`/event/${id}`, {replace: true})} className='w-full h-40 border-2 border-black rounded-xl px-2 mb-2 relative'>
+            <div className='flex justify-center'>
+                <h3 className='max-w-xs truncate'>{event.title}</h3>
+            </div>
+            <div className='absolute right-2 top-0.5 '>
+                <Menu direction={'left'} align={'start'} onClick={layerButton} menuButton={<MenuButton onClick={layerButton} ><BsThreeDotsVertical size={22}/></MenuButton>}>
+                    <MenuGroup>
+                        <MenuItem onClick={()=> delEvent(id)}>Leave Event</MenuItem>
+                    </MenuGroup>
+                </Menu>
             </div>
             <div className='flex'>
                 <div className='w-30'>
@@ -29,7 +42,6 @@ const EventCard = ({event, id}) => {
                     </div>
                 </div>
             </div>
-        </Link>
     </div>
 }
 
