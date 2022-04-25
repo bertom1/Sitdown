@@ -1,25 +1,37 @@
+import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
 import React, { Component } from "react";
 import Step1 from "../components/add1";
 import Step2 from "../components/add2";
 import Step3 from "../components/add3";
 import Step4 from "../components/add4";
 import MultiStepProgressBar from "../components/ProgressBar";
+import { Navigate } from "react-router-dom";
+//import {addEvent} from "../Context/EventContext"
+//import  from "../Context/EventContext";
+//import contextVals from '../Context/EventContext';
+import { EventContext , EventProvider } from "../Context/EventContext";
+import { AiTwotoneRightSquare } from "react-icons/ai";
 
 class MasterForm extends Component {
+  static contextType = EventContext;
+
   constructor(props) {
     super(props);
 
     // Set the intial input values
     this.state = {
       currentStep: 1,
+      redirect: false,
       title: "",
       date: "",
       time: 0,
-      location:"",
-      memo:"",
-      person:"",
-      inviteList:[],
-      thingsToBring:[]
+      address: "",
+      description: "",
+      person: "",
+      guests: [],
+      itemName: "",
+      itemCategory: "",
+      items: [],
     };
 
     // Bind the submission to handleChange()
@@ -34,41 +46,66 @@ class MasterForm extends Component {
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
+
     console.log(name, value);
   }
 
-
   handleAddNewPerson = () => {
-   this.setState(prevState => ({
-    inviteList: [...prevState.inviteList, prevState.person],
-    person :"",
+    this.setState((prevState) => ({
+      guests: [...prevState.guests, prevState.person],
+      person: "",
     }));
-    console.log(this.state.inviteList);
-    
+    console.log(this.state.guests);
   };
 
   //delete's names - when there's more than one occurence, this deletes all occurences
-  handleDeletePerson =(name)=>{
-    console.log(name.anotherone);
-     this.setState((prevState) => ({
-       inviteList: prevState.inviteList.filter((person) => person !== name.anotherone),
-      
-     }));
-     console.log(this.state.inviteList); 
+  handleDeletePerson = (name) => {
+    console.log(name);
+    this.setState((prevState) => ({
+      guests: prevState.guests.filter((person) => person !== name.people),
+    }));
+    console.log(this.state.guests);
+  };
+
+  handleAddNewItem = () => {
+    this.setState((prevState) => ({
+      items: [
+        ...prevState.items,
+        { name: prevState.itemName, category: prevState.itemCategory },
+      ],
+      itemName: "",
+      itemCategory: "",
+    }));
+    console.log(this.state.items);
+  };
+
+  //delete's names - when there's more than one occurence, this deletes all occurences
+  handleDeleteItem = (partyStuff) => {
+    this.setState((prevState) => ({
+      items: prevState.items.filter(
+        (thing) => thing.name !== partyStuff.item.name
+      ),
+    }));
+    console.log(this.state.guests);
   };
 
   // Trigger an alert on form submission
-  handleSubmit = event => {
-    event.preventDefault();
-    const { title, date, time } = this.state;
-    alert(`Your registration detail: \n 
-       Email: ${title} \n 
-       Username: ${date} \n
-      Password: ${time}`);
-    console.log("hey there!");
-    alert("hello");
+  handleSubmit = (event) => {
+     event.preventDefault();
+    const { addEvent } = this.context;
+   
+    addEvent({ ...this.state });
+    this.setState({
+      ...this.state,
+      redirect: true,
+    })
+    // const { title, date, time } = this.state;
+    // alert(`Your registration detail: \n 
+    //    Email: ${title} \n 
+    //    Username: ${date} \n
+    //    Password: ${time}`);
   };
 
   // Test current step with ternary
@@ -79,7 +116,7 @@ class MasterForm extends Component {
     // If the current step is 1 or 2, then add one on "next" button click
     currentStep = currentStep >= 3 ? 4 : currentStep + 1;
     this.setState({
-      currentStep: currentStep
+      currentStep: currentStep,
     });
   }
 
@@ -88,7 +125,7 @@ class MasterForm extends Component {
     // If the current step is 2 or 3, then subtract one on "previous" button click
     currentStep = currentStep <= 1 ? 1 : currentStep - 1;
     this.setState({
-      currentStep: currentStep
+      currentStep: currentStep,
     });
   }
 
@@ -99,7 +136,10 @@ class MasterForm extends Component {
     // If the current step is not 1, then render the "previous" button
     if (currentStep !== 1) {
       return (
-        <button className="bg-slate-200 rounded-md px-2 py-1 my-2 mx-2 hover:bg-slate-100" onClick={this._prev}>
+        <button
+          className="bg-slate-200 rounded-md px-2 py-1 my-2 mx-2 hover:bg-slate-100"
+          onClick={this._prev}
+        >
           Previous
         </button>
       );
@@ -132,59 +172,73 @@ class MasterForm extends Component {
 
     // If the current step is the last step, then render the "submit" button
     if (currentStep > 3) {
-      return <button className="bg-lightpink rounded-md px-2 py-1 ">Submit</button>;
+      return (
+        <button type="submit" className="bg-lightpink rounded-md px-2 py-1 " onClick={this.handleSubmit}>Submit</button>
+      );
     }
     // ...else render nothing
     return null;
   }
 
   render() {
+    const {addEvent} = this.context
+    const redirect = this.state.redirect;
+       if (redirect === true) {
+         return <Navigate to="/" />;
+       }
     return (
-      <>
-        <div className="w-full block" onSubmit={this.handleSubmit}>
+      // <EventProvider value={this.state}>
+        <div
+          className="w-full block"
+          //onSubmit={console.log("help now")}
+        >
           {/* <div className="box-border h-32 px-6"> */}
-            <div className="box-border h-5 w-32 block text-sm font-medium text-slate-700">
-              {/* Add New Event */}
-            </div>
+          <div className="box-border h-5 w-32 block text-sm font-medium text-slate-700">
+            {/* Add New Event */}
+          </div>
+          <div className="w-full">
             <div className="w-full">
-              <div className="w-full">
-                <MultiStepProgressBar currentStep={this.state.currentStep} />
-              </div>
-              <div />
-              <div classname="py-50">
-                <Step1
-                  currentStep={this.state.currentStep}
-                  handleChange={this.handleChange}
-                  email={this.state.email}
-                />
-                <Step2
-                  currentStep={this.state.currentStep}
-                  handleChange={this.handleChange}
-                  person={this.state.person}
-                  inviteList={this.state.inviteList}
-                  handleAddNewPerson={this.handleAddNewPerson}
-                  handleDeletePerson={this.handleDeletePerson}
-                />
-                <Step3
-                  currentStep={this.state.currentStep}
-                  handleChange={this.handleChange}
-                  email={this.state.password}
-                />
-                <Step4
-                  currentStep={this.state.currentStep}
-                  handleChange={this.handleChange}
-                  email={this.state.password}
-                />
-              </div>
+              <MultiStepProgressBar currentStep={this.state.currentStep} />
             </div>
-            <div>
-              {this.previousButton}
-              {this.nextButton}
-              {this.submitButton}
+            <div />
+            <div classname="py-50">
+              <Step1
+                currentStep={this.state.currentStep}
+                handleChange={this.handleChange}
+              />
+              <Step2
+                currentStep={this.state.currentStep}
+                handleChange={this.handleChange}
+                person={this.state.person}
+                guests={this.state.guests}
+                handleAddNewPerson={this.handleAddNewPerson}
+                handleDeletePerson={this.handleDeletePerson}
+              />
+              <Step3
+                currentStep={this.state.currentStep}
+                handleChange={this.handleChange}
+                itemCategory={this.state.itemCategory}
+                itemName={this.state.itemName}
+                handleAddNewItem={this.handleAddNewItem}
+                handleDeleteItem={this.handleDeleteItem}
+                items={this.state.items}
+              />
+              <Step4
+                currentStep={this.state.currentStep}
+                handleChange={this.handleChange}
+                state={this.state}
+                previous={this._prev}
+              />
             </div>
+          </div>
+          <div>
+            {this.previousButton}
+            {this.nextButton}
+            {this.submitButton}
+          </div>
           {/* </div> */}
         </div>
-      </>
+      // </EventProvider>
     );
   }
 }
