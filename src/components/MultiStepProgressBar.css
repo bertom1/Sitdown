@@ -37,3 +37,52 @@ li{
     list-style-type: none;
     background: #fafafa;
 }
+
+/* input[type="date"] {
+    position: relative;
+    /* padding: 10px; */
+
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    color: transparent;
+    background: none;
+    z-index: 1;
+}  */
+
+/* input[type="date"]:before { */
+    /* color: transparent;
+    background: none; */
+    /* display: block;
+    font-size: 18px;
+    font-weight: 900;
+    font-family: 'Font Awesome 5 Free';
+    content: '\f073'; */
+    /* This is the calendar icon in FontAwesome */
+    /* width: 15px;
+    height: 20px;
+    position: absolute;
+    top: 12px;
+    right: 6px;
+    color: #999;
+}  */
+/* 
+    input[type="date"] {
+        display: inline-block;
+        position: relative
+    }
+    
+    input[type="date"]:after {
+        font-family: 'FontAwesome';
+        content: '\f073';
+        position: absolute;
+        right: 5px;
+    } */
+
+    /* .cal{
+            float: right;
+            margin-right: 6px;
+            margin-top: -20px;
+            position: relative;
+            z-index: 2;
+            color: red;
+    } */

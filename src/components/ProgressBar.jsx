@@ -105,13 +105,16 @@ const MultiStepProgressBar = (props) => {
       <div className="py-4 px-1 text-xs">
         <ul>
           <li>
-            Event <br />Details
+            Event <br />
+            Details
           </li>
           <li>
-            Invite <br />List
+            Invite <br />
+            List
           </li>
           <li>
-            Party <br/>Stuff
+            Party <br />
+            Plan
           </li>
           <li>
             Finish <br /> Up

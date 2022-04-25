@@ -3,19 +3,23 @@ import Step1 from "../components/add1";
 import Step2 from "../components/add2";
 import Step3 from "../components/add3";
 import Step4 from "../components/add4";
-import { ProgressBar } from "react-step-progress-bar";
 import MultiStepProgressBar from "../components/ProgressBar";
 
 class MasterForm extends Component {
   constructor(props) {
     super(props);
 
-    // Set the intiial input values
+    // Set the intial input values
     this.state = {
       currentStep: 1,
-      email: "",
-      username: "",
-      password: ""
+      title: "",
+      date: "",
+      time: 0,
+      location:"",
+      memo:"",
+      person:"",
+      inviteList:[],
+      thingsToBring:[]
     };
 
     // Bind the submission to handleChange()
@@ -32,16 +36,39 @@ class MasterForm extends Component {
     this.setState({
       [name]: value
     });
+    console.log(name, value);
   }
+
+
+  handleAddNewPerson = () => {
+   this.setState(prevState => ({
+    inviteList: [...prevState.inviteList, prevState.person],
+    person :"",
+    }));
+    console.log(this.state.inviteList);
+    
+  };
+
+  //delete's names - when there's more than one occurence, this deletes all occurences
+  handleDeletePerson =(name)=>{
+    console.log(name.anotherone);
+     this.setState((prevState) => ({
+       inviteList: prevState.inviteList.filter((person) => person !== name.anotherone),
+      
+     }));
+     console.log(this.state.inviteList); 
+  };
 
   // Trigger an alert on form submission
   handleSubmit = event => {
     event.preventDefault();
-    const { email, username, password } = this.state;
+    const { title, date, time } = this.state;
     alert(`Your registration detail: \n 
-      Email: ${email} \n 
-      Username: ${username} \n
-      Password: ${password}`);
+       Email: ${title} \n 
+       Username: ${date} \n
+      Password: ${time}`);
+    console.log("hey there!");
+    alert("hello");
   };
 
   // Test current step with ternary
@@ -72,7 +99,7 @@ class MasterForm extends Component {
     // If the current step is not 1, then render the "previous" button
     if (currentStep !== 1) {
       return (
-        <button color="secondary float-left" onClick={this._prev}>
+        <button className="bg-slate-200 rounded-md px-2 py-1 my-2 mx-2 hover:bg-slate-100" onClick={this._prev}>
           Previous
         </button>
       );
@@ -87,7 +114,11 @@ class MasterForm extends Component {
     // If the current step is not 3, then render the "next" button
     if (currentStep < 4) {
       return (
-        <button color="primary float-right" onClick={this._next}>
+        <button
+          color="primary float-right"
+          className="bg-pink rounded-md px-2 py-1 my-2 hover:bg-lightpink active:bg-pink focus:outline-none focus:ring focus:ring-pink"
+          onClick={this._next}
+        >
           Next
         </button>
       );
@@ -101,7 +132,7 @@ class MasterForm extends Component {
 
     // If the current step is the last step, then render the "submit" button
     if (currentStep > 3) {
-      return <button color="primary float-right">Submit</button>;
+      return <button className="bg-lightpink rounded-md px-2 py-1 ">Submit</button>;
     }
     // ...else render nothing
     return null;
@@ -129,7 +160,10 @@ class MasterForm extends Component {
                 <Step2
                   currentStep={this.state.currentStep}
                   handleChange={this.handleChange}
-                  email={this.state.username}
+                  person={this.state.person}
+                  inviteList={this.state.inviteList}
+                  handleAddNewPerson={this.handleAddNewPerson}
+                  handleDeletePerson={this.handleDeletePerson}
                 />
                 <Step3
                   currentStep={this.state.currentStep}
