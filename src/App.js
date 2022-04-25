@@ -48,7 +48,7 @@ function App() {
                 <Route path="/invite/:id" element={<InvitePage />} />
                 <Route path="/add" element={<AddPage />} />
                 <Route path="/chat" element={<></>} />
-                <Route path="/profile" element={<></>} />
+                <Route path="/profile" element={<ProfilePage />} />
               </Routes>
 
 

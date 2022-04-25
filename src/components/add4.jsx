@@ -45,7 +45,7 @@ const Step4 = (props) => {
                 key={index}
                 className="px-4 py-2 border-2 border-slate-500 text-sm text-right rounded-md px-2 mb-2 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
               >
-                {people}
+                {people.name}
               </li>
             ))}
           </ul>
@@ -68,14 +68,14 @@ const Step4 = (props) => {
         </div>
 
         <div className="bg-slate-50 box-border h-32 w-64 px-2 rounded-md py-2 my-2">
-          <ul className="grid auto-rows-fr gap-1 grid-cols-5 space-between overflow-x-auto ">
+          <ul className="grid grid-flow-cols gap-1 space-between overflow-x-auto ">
             {props.state.items.map((item, index) => (
               <li
                 key={index}
-                id={item.category}
+                //id={item.category}
                 className="overflow-hidden px-1 py-1 border-2 border-slate-500 text-xs rounded-md mb-1 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
               >
-                {item.name}
+                {item}
               </li>
             ))}
           </ul>

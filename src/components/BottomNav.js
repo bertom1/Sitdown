@@ -14,7 +14,7 @@ const BottomNav = () => {
         <div id="tabs" class="flex justify-between">
           <Link
             to="/"
-            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
+            class="w-full focus:text-slate-400 hover:text-slate-500 justify-center inline-block text-center pt-2 pb-1"
           >
             <GrHomeRounded size={25} class="inline-block mb-1 object-center" />
             <span class="tab tab-kategori block text-xs">home</span>
@@ -22,7 +22,7 @@ const BottomNav = () => {
 
           <Link
             to="/add"
-            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
+            class="w-full focus:text-slate-400 hover:text-slate-500 justify-center inline-block text-center pt-2 pb-1"
           >
             <AiOutlinePlusCircle
               size={25}
@@ -33,7 +33,7 @@ const BottomNav = () => {
 
           <Link
             to="/chat"
-            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1"
+            class="w-full focus:text-slate-400 hover:text-slate-500 justify-center inline-block text-center pt-2 pb-1"
           >
             <BsChatLeftDots size={25} class="inline-block mb-1 object-center" />
             <span class="tab tab-kategori block text-xs">chat</span>

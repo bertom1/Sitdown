@@ -40,7 +40,7 @@ const Step3 = (props) => {
             />
           </label>
 
-          <label class=" relative text-gray-400 block py-2 justify-items-center px-2">
+          {/* <label class=" relative text-gray-400 block py-2 justify-items-center px-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 pointer-events-none absolute top-1/2 transform -translate-y-2/3 left-4"
@@ -60,8 +60,8 @@ const Step3 = (props) => {
               name="itemCategory"
               id="itemCategory"
               class="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
-              value={props.itemCategory} // Prop: The email input data
-              onChange={props.handleChange} // Prop: Puts data into the state
+              value={props.itemCategory} 
+              onChange={props.handleChange} 
             >
               <option value="NaN">select category...</option>
               <option value="food">food</option>
@@ -69,7 +69,7 @@ const Step3 = (props) => {
               <option value="utensils">utensils</option>
               <option value="party-goods">party goods</option>
             </select>
-          </label>
+          </label> */}
         </form>
         <button
           className="bg-lightpink px-2 py-1 rounded-md m-2 "
@@ -95,10 +95,10 @@ const Step3 = (props) => {
           {props.items.map((item, index) => (
             <li
               key={index}
-              id={item.category}
-              className="overflow-hidden px-2 py-1 border-2 border-slate-500 text-xs rounded-md mb-1 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
+              //id={item.category}
+              className="overflow-hidden px-2 py-1 bg-slate-300 text-xs rounded-md mb-1 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
             >
-              {item.name}
+              {item}
               <button
                 onClick={() => {
                   props.handleDeleteItem({ item });
