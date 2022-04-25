@@ -2,7 +2,7 @@ import Celebration from '../../image/celebration.svg'
 import { AiOutlineClose, AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai'
 import { GoogleMap, Marker } from '@react-google-maps/api'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEvent } from '../../Context/EventContext'
 
 const EventPage = () => {
@@ -17,6 +17,7 @@ const EventPage = () => {
         geolocation:{lat: 0, lng: 0},
         description: `...`
     }
+    const nav = useNavigate()
     const {events, delEvent, removeItem, addItem, addOther } = useEvent()
     let { id } = useParams()
     id = Number(id)
@@ -47,6 +48,12 @@ const EventPage = () => {
             {street} <br />
             {rest}
         </p>
+    }
+    const handleDelete = () => {
+        if (window.confirm('Are you sure you want to leave this event? \nYou will need to request a new invite if you decide change your mind after deleting.')){
+            delEvent(id)
+            nav('/', {replace: true})
+        }
     }
     return <div>
         <img className='mx-auto' src={Celebration} alt='celebration'/>
@@ -118,7 +125,7 @@ const EventPage = () => {
                         })
                     }
                 </div>
-                <div>
+                <div className='mt-2'>
                     <p>Guests:</p>
                     {
                         event.guests.map((guest, index) => {
@@ -131,7 +138,7 @@ const EventPage = () => {
             <button className='rounded-lg px-5 py-1 bg-gray-400 mr-4' >
                 Edit Event
             </button>
-            <button type='button' onClick={() => {}} className='rounded-lg px-5 py-1 bg-red-500 text-white'>
+            <button type='button' onClick={handleDelete} className='rounded-lg px-5 py-1 bg-red-500 text-white'>
                 Leave Event
             </button>
         </div>

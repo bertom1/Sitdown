@@ -20,7 +20,7 @@ const EventContainer = () => {
                 Invited Events ({invites.length})
             </p>
         </div>
-        {toggleInvite && <div>
+        {toggleInvite && <div className='mb-2'>
             {invites.length > 0 ? invites.map((inv, index) => {
                 return <InviteCard key={index} invite={inv} id={index} />
             })
@@ -30,9 +30,11 @@ const EventContainer = () => {
         </div>
         }
         {
-        events.map((ev, index) => {
+        events.length > 0 ? events.map((ev, index) => {
             return <EventCard key={index} event={ev} id={index} />
         })
+        :
+        <p>No Events to display</p>
         }
     </div>
 }

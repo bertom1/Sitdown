@@ -77,15 +77,15 @@ export const EventProvider = ({children}) => {
 
 export const InviteProvider = ({children}) => {
     let [invites, setInvites] = useState([{
-        title: `Random Event`,
-        date: '01/01/2023',
-        time: '12:00',
+        title: `Jack's Birthday Party`,
+        date: '09/21/2023',
+        time: '6:00 PM',
         myItems: [],
-        guests: [{name: 'John', items:['Avocado', 'forks']}, {name: 'Dylan', items: ['banana', 'something random']}],
-        items: ['cups', 'plates', 'doughnuts'],
+        guests: [{name: 'Adam', items:['Plates', 'Forks', 'Cups']}, {name: 'Dylan', items: ['Brownies', 'Candles']}, {name:'Jessica', items:['Pizza, Breadsticks']}, {name:'Tom', items:['Chicken Wings']}],
+        items: ['Soda', 'Potato Chips', 'Mac and Cheese', 'Hummus'],
         address:'1600 Pennsylvania Avenue NW, Washington, DC 20500',
         geolocation:{lat: 38.8977, lng: -77.0365},
-        description: `Random event placeholder used for testing`
+        description: `Celebrating Jack's 23rd birthday! Gifts are optional.`
     }])
     const contextVals = {
         invites: invites,
