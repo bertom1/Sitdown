@@ -112,23 +112,23 @@ const Step1 = (props) => {
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <SB/>
+            <SB />
           </label>
 
-          <label class="block py-2" for="memo">
+          <label class="block py-2" for="description">
             <span class="block text-xs font-medium text-slate-700 text-left text-top px-2">
-              Memo
+              description
             </span>
             <textarea
               type="text"
-              name="memo"
-              id="memo"
-              placeholder="optional memo"
+              name="description"
+              id="description"
+              placeholder="optional description"
               rows="3"
               className="w-full h-24 mt-.5 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               required
-              value={props.memo} // Prop: The email input data
+              value={props.description} // Prop: The email input data
               onChange={props.handleChange} // Prop: Puts data into the state
             />
           </label>

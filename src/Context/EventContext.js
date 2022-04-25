@@ -5,7 +5,7 @@ import React, {useContext, useState} from 'react'
  * via destructuring with a call to the useEvent hook.
  * ex. Const {addEvent, delEvent} = useEvent()
  */
-const EventContext = React.createContext({events: [], 
+export const EventContext = React.createContext({events: [], 
     addEvent: () => {}, 
     delEvent: () => {} })
 

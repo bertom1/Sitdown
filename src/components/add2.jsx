@@ -1,8 +1,6 @@
 import React from "react";
 
-const Step2 = props => {
-
-  
+const Step2 = (props) => {
   if (props.currentStep !== 2) {
     return null;
   }
@@ -66,7 +64,7 @@ const Step2 = props => {
         </button>
 
         <ol className="grid justify-items-center space-between">
-          {props.inviteList.map((people, index) => (
+          {props.guests.map((people, index) => (
             <li
               key={index}
               className="w-2/3 px-4 py-2 border-2 border-slate-500 text-left rounded-md px-2 mb-2 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
@@ -135,4 +133,3 @@ const Step2 = props => {
 };
 
 export default Step2;
-

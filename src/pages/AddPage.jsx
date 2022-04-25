@@ -5,24 +5,33 @@ import Step2 from "../components/add2";
 import Step3 from "../components/add3";
 import Step4 from "../components/add4";
 import MultiStepProgressBar from "../components/ProgressBar";
+import { Navigate } from "react-router-dom";
+//import {addEvent} from "../Context/EventContext"
+//import  from "../Context/EventContext";
+//import contextVals from '../Context/EventContext';
+import { EventContext , EventProvider } from "../Context/EventContext";
+import { AiTwotoneRightSquare } from "react-icons/ai";
 
 class MasterForm extends Component {
+  static contextType = EventContext;
+
   constructor(props) {
     super(props);
 
     // Set the intial input values
     this.state = {
       currentStep: 1,
+      redirect: false,
       title: "",
       date: "",
       time: 0,
-      location: "",
-      memo: "",
+      address: "",
+      description: "",
       person: "",
-      inviteList: [],
+      guests: [],
       itemName: "",
       itemCategory: "",
-      thingsToBring: [],
+      items: [],
     };
 
     // Bind the submission to handleChange()
@@ -40,59 +49,63 @@ class MasterForm extends Component {
       [name]: value,
     });
 
-    console.log(name,value);
+    console.log(name, value);
   }
 
   handleAddNewPerson = () => {
     this.setState((prevState) => ({
-      inviteList: [...prevState.inviteList, prevState.person],
+      guests: [...prevState.guests, prevState.person],
       person: "",
     }));
-    console.log(this.state.inviteList);
+    console.log(this.state.guests);
   };
 
   //delete's names - when there's more than one occurence, this deletes all occurences
   handleDeletePerson = (name) => {
     console.log(name);
     this.setState((prevState) => ({
-      inviteList: prevState.inviteList.filter(
-        (person) => person !== name.people
-      ),
+      guests: prevState.guests.filter((person) => person !== name.people),
     }));
-    console.log(this.state.inviteList);
+    console.log(this.state.guests);
   };
 
   handleAddNewItem = () => {
     this.setState((prevState) => ({
-      thingsToBring: [
-        ...prevState.thingsToBring,
+      items: [
+        ...prevState.items,
         { name: prevState.itemName, category: prevState.itemCategory },
       ],
       itemName: "",
       itemCategory: "",
     }));
-    console.log(this.state.thingsToBring);
+    console.log(this.state.items);
   };
 
   //delete's names - when there's more than one occurence, this deletes all occurences
   handleDeleteItem = (partyStuff) => {
     this.setState((prevState) => ({
-      thingsToBring: prevState.thingsToBring.filter(
+      items: prevState.items.filter(
         (thing) => thing.name !== partyStuff.item.name
       ),
     }));
-    console.log(this.state.inviteList);
+    console.log(this.state.guests);
   };
 
   // Trigger an alert on form submission
   handleSubmit = (event) => {
-    event.preventDefault();
-    const { title, date, time } = this.state;
-    alert(`Your registration detail: \n 
-       Email: ${title} \n 
-       Username: ${date} \n
-       Password: ${time}`);
-
+     event.preventDefault();
+    const { addEvent } = this.context;
+   
+    addEvent({ ...this.state });
+    this.setState({
+      ...this.state,
+      redirect: true,
+    })
+    // const { title, date, time } = this.state;
+    // alert(`Your registration detail: \n 
+    //    Email: ${title} \n 
+    //    Username: ${date} \n
+    //    Password: ${time}`);
   };
 
   // Test current step with ternary
@@ -160,7 +173,7 @@ class MasterForm extends Component {
     // If the current step is the last step, then render the "submit" button
     if (currentStep > 3) {
       return (
-        <button className="bg-lightpink rounded-md px-2 py-1 ">Submit</button>
+        <button type="submit" className="bg-lightpink rounded-md px-2 py-1 " onClick={this.handleSubmit}>Submit</button>
       );
     }
     // ...else render nothing
@@ -168,9 +181,17 @@ class MasterForm extends Component {
   }
 
   render() {
+    const {addEvent} = this.context
+    const redirect = this.state.redirect;
+       if (redirect === true) {
+         return <Navigate to="/" />;
+       }
     return (
-      <>
-        <div className="w-full block" onSubmit={this.handleSubmit}>
+      // <EventProvider value={this.state}>
+        <div
+          className="w-full block"
+          //onSubmit={console.log("help now")}
+        >
           {/* <div className="box-border h-32 px-6"> */}
           <div className="box-border h-5 w-32 block text-sm font-medium text-slate-700">
             {/* Add New Event */}
@@ -189,7 +210,7 @@ class MasterForm extends Component {
                 currentStep={this.state.currentStep}
                 handleChange={this.handleChange}
                 person={this.state.person}
-                inviteList={this.state.inviteList}
+                guests={this.state.guests}
                 handleAddNewPerson={this.handleAddNewPerson}
                 handleDeletePerson={this.handleDeletePerson}
               />
@@ -200,7 +221,7 @@ class MasterForm extends Component {
                 itemName={this.state.itemName}
                 handleAddNewItem={this.handleAddNewItem}
                 handleDeleteItem={this.handleDeleteItem}
-                thingsToBring={this.state.thingsToBring}
+                items={this.state.items}
               />
               <Step4
                 currentStep={this.state.currentStep}
@@ -217,7 +238,7 @@ class MasterForm extends Component {
           </div>
           {/* </div> */}
         </div>
-      </>
+      // </EventProvider>
     );
   }
 }
