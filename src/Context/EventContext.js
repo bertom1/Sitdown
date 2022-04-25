@@ -35,10 +35,40 @@ export const EventProvider = ({children}) => {
         address:'1600 Pennsylvania Avenue NW, Washington, DC 20500',
         geolocation:{lat: 38.8977, lng: -77.0365},
     }])
+    const removeItem = (targetEvent, targetItem) => {
+        let te = events[targetEvent]
+        let item = te.myItems[targetItem]
+        let updatedItems = te.myItems.filter((_, index) => index !== targetItem)
+        te.myItems = updatedItems
+        te.items = [...te.items, item]
+        let updatedEvents = [...events]
+        updatedEvents[targetEvent] = te
+        setEvents(updatedEvents)
+    }
+    const addItem = (targetEvent, targetItem) => {
+        let te = events[targetEvent]
+        let item = te.items[targetItem]
+        let updatedItems = te.items.filter((_, index) => index != targetItem)
+        te.myItems = [...te.myItems, item]
+        te.items = updatedItems
+        let updatedEvents = [...events]
+        updatedEvents[targetEvent] = te
+        setEvents(updatedEvents)
+    }
+    const addOther = (targetEvent, newItem) => {
+        let te = events[targetEvent]
+        te.myItems = [...te.myItems, newItem]
+        let updatedEvents = [...events]
+        updatedEvents[targetEvent] = te
+        setEvents(updatedEvents)
+    }
     const contextVals = {
         events: events,
         addEvent: (e) => setEvents([...events, e]),
-        delEvent: (targetIndex) => setEvents(events.filter((item, index) => index !== targetIndex))
+        delEvent: (targetIndex) => setEvents(events.filter((item, index) => index !== targetIndex)),
+        removeItem: (te, ti) => removeItem(te, ti),
+        addItem: (te, ti) => addItem(te, ti),
+        addOther: (te, ti) => addOther(te, ti)
     }
     return <EventContext.Provider value={contextVals} >
         {children}
