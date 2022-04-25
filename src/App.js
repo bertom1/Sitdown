@@ -5,9 +5,11 @@ import BottomNav from "./components/BottomNav";
 import AddPage from "./pages/AddPage";
 import { EventContainer } from "./components/Event Container";
 import { EventProvider, InviteProvider } from "./Context/EventContext";
+import { UserProvider } from "./Context/UserContext";
 import { LoadScript } from "@react-google-maps/api";
 import { EventPage } from "./components/Event Page";
 import { InvitePage } from './components/Invite Page'
+import { ProfilePage } from "./components/Profile Page";
 // import Dogs from "./pages/Dogs";
 // import Cats from "./pages/Cats";
 // import Sheeps from "./pages/Sheeps";
@@ -32,15 +34,15 @@ function App() {
   const scriptLibraries = ["places"]
   return (
     <div className="App">
-      <LoadScript
-        googleMapsApiKey="AIzaSyAuFzEe4kobTk82fqLz3Qz3UyIPhfKX1nk"
-        libraries={scriptLibraries}
-      >
+    
+      <LoadScript googleMapsApiKey="AIzaSyAuFzEe4kobTk82fqLz3Qz3UyIPhfKX1nk" libraries={scriptLibraries}>
+      <UserProvider >
         <EventProvider>
           <InviteProvider>
             <BrowserRouter>
               <TopNav />
               <Routes>
+
                 <Route path="/" element={<EventContainer />} />
                 <Route path="/event/:id" element={<EventPage />} />
                 <Route path="/invite/:id" element={<InvitePage />} />
@@ -49,10 +51,14 @@ function App() {
                 <Route path="/profile" element={<></>} />
               </Routes>
 
+
               <BottomNav />
             </BrowserRouter>
           </InviteProvider>
         </EventProvider>
+                                             
+      </UserProvider>
+
       </LoadScript>
     </div>
   );
