@@ -30,8 +30,8 @@ class MasterForm extends Component {
       person: "",
       guests: [],
       itemName: "",
-      itemCategory: "",
       items: [],
+      myItems:[],
     };
 
     // Bind the submission to handleChange()
@@ -54,7 +54,9 @@ class MasterForm extends Component {
 
   handleAddNewPerson = () => {
     this.setState((prevState) => ({
-      guests: [...prevState.guests, prevState.person],
+      guests: [...prevState.guests, 
+        {name : prevState.person, 
+         items: ["invite pending"]}],
       person: "",
     }));
     console.log(this.state.guests);
@@ -73,10 +75,9 @@ class MasterForm extends Component {
     this.setState((prevState) => ({
       items: [
         ...prevState.items,
-        { name: prevState.itemName, category: prevState.itemCategory },
+         prevState.itemName,
       ],
       itemName: "",
-      itemCategory: "",
     }));
     console.log(this.state.items);
   };
@@ -85,7 +86,7 @@ class MasterForm extends Component {
   handleDeleteItem = (partyStuff) => {
     this.setState((prevState) => ({
       items: prevState.items.filter(
-        (thing) => thing.name !== partyStuff.item.name
+        (thing) => thing !== partyStuff.item
       ),
     }));
     console.log(this.state.guests);
@@ -217,7 +218,7 @@ class MasterForm extends Component {
               <Step3
                 currentStep={this.state.currentStep}
                 handleChange={this.handleChange}
-                itemCategory={this.state.itemCategory}
+                //itemCategory={this.state.itemCategory}
                 itemName={this.state.itemName}
                 handleAddNewItem={this.handleAddNewItem}
                 handleDeleteItem={this.handleDeleteItem}
