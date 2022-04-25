@@ -9,6 +9,7 @@ import { UserProvider } from "./Context/UserContext";
 import { LoadScript } from "@react-google-maps/api";
 import { EventPage } from "./components/Event Page";
 import { InvitePage } from './components/Invite Page'
+import { ProfilePage } from "./components/Profile Page";
 // import Dogs from "./pages/Dogs";
 // import Cats from "./pages/Cats";
 // import Sheeps from "./pages/Sheeps";
@@ -45,7 +46,7 @@ function App() {
                 <Route path='/invite/:id' element={<InvitePage />} />
                 <Route path="/add" element={<AddPage/>} />
                 <Route path="/chat" element={<></>}/>
-                <Route path="/profile" element={<></>}/>
+                <Route path="/profile" element={<ProfilePage />}/>
               </Routes>
               <BottomNav />
             </BrowserRouter>

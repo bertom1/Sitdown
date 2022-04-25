@@ -20,7 +20,7 @@ export const UserProvider = ({children}) => {
 
     const contextVals = {
         user: user,
-        editUser: (uu) => submitEdit(uu)
+        submitEdit: (uu) => submitEdit(uu)
     }
     return <UserContext.Provider value={contextVals} >
         {children}
