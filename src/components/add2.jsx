@@ -12,14 +12,14 @@ const Step2 = props => {
       <div>
         {/* <div className="grid justify-items-center"></div> */}
         <form className="relative">
-          <label class=" relative text-gray-400 block">
+          <label class=" relative text-gray-400 block px-2">
             <span class="block text-xs font-medium text-slate-700 text-left px-2">
               People
             </span>
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="pointer-events-none w-6 h-6 absolute top-2/3 transform -translate-y-2/3 left-3"
+              className="pointer-events-none w-4 h-4 absolute top-2/3 transform -translate-y-2/3 left-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -66,7 +66,7 @@ const Step2 = props => {
         </button>
 
         <ol className="grid justify-items-center space-between">
-          {props.inviteList.map((anotherone, index) => (
+          {props.inviteList.map((people, index) => (
             <li
               key={index}
               className="w-2/3 px-4 py-2 border-2 border-slate-500 text-left rounded-md px-2 mb-2 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
@@ -85,10 +85,10 @@ const Step2 = props => {
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                 />
               </svg>
-              {anotherone}
+              {people}
               <button
                 onClick={() => {
-                  props.handleDeletePerson({ anotherone });
+                  props.handleDeletePerson({ people });
                 }}
               >
                 <svg

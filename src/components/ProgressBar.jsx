@@ -3,34 +3,6 @@ import "./MultiStepProgressBar.css";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 
-{
-  /* <StepProgressBar
-        startingStep={0}
-        steps={[
-          {
-            label: "Briefing",
-            name: "Briefing",
-            content: step1Content
-          },
-          {
-            label: "Image-Acquisition",
-            name: "Image-Acquisition",
-            content: step2Content
-          },
-          {
-            label: "Image-processing",
-            name: "Image Processing",
-            content: step3Content,
-            validator: step2Validator
-          },
-          {
-            label: "Finish",
-            name: "Finish",
-            content: step3Content
-          }
-        ]}
-      /> */
-}
 
 const MultiStepProgressBar = (props) => {
   var stepPercentage = 0;

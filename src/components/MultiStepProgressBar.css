@@ -25,7 +25,6 @@ align-items: stretch;
 /* Default */
 justify-content: space-between;
 width: 100%;
-/* background: #cacaca; */
 margin: 0;
 padding: 0;
 }
@@ -38,51 +37,18 @@ li{
     background: #fafafa;
 }
 
-/* input[type="date"] {
-    position: relative;
-    /* padding: 10px; */
+#drink{
+    border-color:rgba(69, 40, 235, 0.8);
+}
 
+#food{
+    border-color:rgba(40, 212, 235, 0.8);
+}
 
-/* input[type="date"]::-webkit-calendar-picker-indicator {
-    color: transparent;
-    background: none;
-    z-index: 1;
-}  */
+#utensils{
+    border-color:rgba(167, 235, 40, 0.8);
+}
 
-/* input[type="date"]:before { */
-    /* color: transparent;
-    background: none; */
-    /* display: block;
-    font-size: 18px;
-    font-weight: 900;
-    font-family: 'Font Awesome 5 Free';
-    content: '\f073'; */
-    /* This is the calendar icon in FontAwesome */
-    /* width: 15px;
-    height: 20px;
-    position: absolute;
-    top: 12px;
-    right: 6px;
-    color: #999;
-}  */
-/* 
-    input[type="date"] {
-        display: inline-block;
-        position: relative
-    }
-    
-    input[type="date"]:after {
-        font-family: 'FontAwesome';
-        content: '\f073';
-        position: absolute;
-        right: 5px;
-    } */
-
-    /* .cal{
-            float: right;
-            margin-right: 6px;
-            margin-top: -20px;
-            position: relative;
-            z-index: 2;
-            color: red;
-    } */
+#party-goods {
+    border-color: #FFB7B7;
+}
