@@ -5,6 +5,7 @@ import BottomNav from "./components/BottomNav";
 import AddPage from "./pages/AddPage";
 import { EventContainer } from "./components/Event Container";
 import { EventProvider, InviteProvider } from "./Context/EventContext";
+import { UserProvider } from "./Context/UserContext";
 import { LoadScript } from "@react-google-maps/api";
 import { EventPage } from "./components/Event Page";
 import { InvitePage } from './components/Invite Page'
@@ -33,23 +34,24 @@ function App() {
   return (
     <div className="App">
       <LoadScript googleMapsApiKey="AIzaSyAuFzEe4kobTk82fqLz3Qz3UyIPhfKX1nk" libraries={scriptLibraries}>
-      <EventProvider>
-        <InviteProvider>
-          <BrowserRouter>
-            <TopNav />
-            <Routes>
-              <Route path="/" element={<EventContainer />}/>
-                <Route path='/event/:id' element={<EventPage />} />
-              <Route path='/invite/:id' element={<InvitePage />} />
-              <Route path="/add" element={<AddPage/>} />
-              <Route path="/chat" element={<></>}/>
-              <Route path="/profile" element={<></>}/>
-            </Routes>
-
-            <BottomNav />
-          </BrowserRouter>
-        </InviteProvider>
-      </EventProvider>
+      <UserProvider >
+        <EventProvider>
+          <InviteProvider>
+            <BrowserRouter>
+              <TopNav />
+              <Routes>
+                <Route path="/" element={<EventContainer />}/>
+                  <Route path='/event/:id' element={<EventPage />} />
+                <Route path='/invite/:id' element={<InvitePage />} />
+                <Route path="/add" element={<AddPage/>} />
+                <Route path="/chat" element={<></>}/>
+                <Route path="/profile" element={<></>}/>
+              </Routes>
+              <BottomNav />
+            </BrowserRouter>
+          </InviteProvider>
+        </EventProvider>
+      </UserProvider>
       </LoadScript>
     </div>
   );
