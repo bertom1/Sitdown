@@ -1,5 +1,6 @@
 import Celebration from '../../image/celebration.svg'
 import { AiOutlineClose, AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai'
+import { GoLocation } from 'react-icons/go'
 import { GoogleMap, Marker } from '@react-google-maps/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -18,16 +19,16 @@ const EventPage = () => {
         description: `...`
     }
     const nav = useNavigate()
-    const {events, delEvent, removeItem, addItem, addOther } = useEvent()
+    const {events, delEvent, removeItem, addItem, addOther, invUser } = useEvent()
     let { id } = useParams()
     id = Number(id)
     const [event, setEvent] = useState(e)
     const [selectedItem, setSelectedItem] = useState('')
     const [otherInput, setOther] = useState('')
+    const [user, setUser] = useState('')
     useEffect(() => {
         setEvent(events[id])
     }, [events, id])
-    console.log(event)
     const Map = ({loc}) => 
     {return <GoogleMap 
             mapContainerStyle={{
@@ -69,7 +70,7 @@ const EventPage = () => {
             </div>
             <div className='flex flex-col '>
             <div className='flex justify-center' >
-                <AiOutlineClockCircle size={18} className='mt-1 mr-1' />
+                <GoLocation size={18} className='mt-1 mr-1' />
                 {formatAddr(event.address)}
             </div>
             <div className='m-auto'>
@@ -127,6 +128,28 @@ const EventPage = () => {
                 </div>
                 <div className='mt-2'>
                     <p>Guests:</p>
+                    <div className='flex ml-5'>
+                    {
+                    <form className='flex' onSubmit={(e) => {
+                        e.preventDefault()
+                        invUser(id, user)
+                        setUser('')
+                    }} >
+                        <label className='flex'> 
+                            Invite User:
+                            <div className='relative' >
+                                <input value={user} className='border-2 border-black ml-1'type='text' onChange={(e) => setUser(e.target.value)}/>
+                                <AiOutlineClose onClick={() =>{
+                                    setUser('')
+                                }} className='absolute right-1 top-1' size={20}/>
+                            </div>
+                        </label>
+                        <button type='submit' className='bg-gray-400 rounded-lg ml-1 px-2 py-1 disabled:opacity-80' disabled={user === '' ? true : false}>
+                            Send
+                        </button>
+                    </form>
+                    }
+                    </div>
                     {
                         event.guests.map((guest, index) => {
                             return <div className='text-left ml-4' key={index}>{`${guest.name}:  ${guest.items.join(', ')}`}</div>

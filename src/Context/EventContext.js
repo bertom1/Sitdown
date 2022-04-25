@@ -62,13 +62,21 @@ export const EventProvider = ({children}) => {
         updatedEvents[targetEvent] = te
         setEvents(updatedEvents)
     }
+    const invUser = (targetEvent, user) => {
+        let te = events[targetEvent]
+        te.guests = [...te.guests, {name: user, items:['Invite Pending']}]
+        let updatedEvents = [...events]
+        updatedEvents[targetEvent] = te
+        setEvents(updatedEvents)
+    }
     const contextVals = {
         events: events,
         addEvent: (e) => setEvents([...events, e]),
         delEvent: (targetIndex) => setEvents(events.filter((item, index) => index !== targetIndex)),
         removeItem: (te, ti) => removeItem(te, ti),
         addItem: (te, ti) => addItem(te, ti),
-        addOther: (te, ti) => addOther(te, ti)
+        addOther: (te, ti) => addOther(te, ti),
+        invUser: (te, u) => invUser(te, u)
     }
     return <EventContext.Provider value={contextVals} >
         {children}

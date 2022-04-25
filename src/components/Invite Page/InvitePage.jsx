@@ -1,6 +1,7 @@
 import Celebration from '../../image/celebration.svg'
 import { useEvent, useInvite } from '../../Context/EventContext'
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai'
+import { GoLocation } from 'react-icons/go'
 import { GoogleMap, Marker } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -73,7 +74,7 @@ const InvitePage = () => {
             </div>
             <div className='flex flex-col '>
             <div className='flex justify-center' >
-                <AiOutlineClockCircle size={18} className='mt-1 mr-1' />
+                <GoLocation size={18} className='mt-1 mr-1' />
                 {formatAddr(invite.address)}
             </div>
             <div className='m-auto'>
