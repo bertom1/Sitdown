@@ -8,10 +8,9 @@ const Step2 = (props) => {
   return (
     <>
       <div>
-        {/* <div className="grid justify-items-center"></div> */}
         <form className="relative">
-          <label class=" relative text-gray-400 block px-2">
-            <span class="block text-xs font-medium text-slate-700 text-left px-2">
+          <label className=" relative text-gray-400 block px-2">
+            <span className="block text-xs font-medium text-slate-700 text-left px-2">
               People
             </span>
 
@@ -35,9 +34,9 @@ const Step2 = (props) => {
               name="person"
               id="person"
               placeholder="add people to invite"
-              class="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
-              value={props.person} // Prop: The email input data
-              onChange={props.handleChange} // Prop: Puts data into the state
+              className="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
+              value={props.person}
+              onChange={props.handleChange} 
             />
           </label>
         </form>
@@ -53,7 +52,6 @@ const Step2 = (props) => {
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth={2}
-            //onClick={props.addToList}
           >
             <path
               strokeLinecap="round"
