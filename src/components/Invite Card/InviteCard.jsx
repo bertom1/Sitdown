@@ -23,10 +23,10 @@ const InviteCard = ({invite, id}) => {
         delInv(id)
     }
     return <div className='w-full h-40 border-2 border-black rounded-xl px-2 mb-2 relative' onClick={()=>nav(`/invite/${id}`, {replace: true})}>
-            <div className='flex justify-center'>
+            <div className='flex justify-center py-1.5'>
                 <h3 className='max-w-xs truncate'>{invite.title}</h3>
             </div>
-            <div className='absolute right-2 top-0.5 '>
+            <div className='absolute right-2 top-1'>
                 <Menu onClick={layerButton} direction={'left'} align={'start'} menuButton={<MenuButton onClick={layerButton} ><BsThreeDotsVertical size={22}/></MenuButton>}>
                     <MenuGroup>
                         <MenuItem onClick={handleAdd}>Accept Invite</MenuItem>
@@ -34,13 +34,13 @@ const InviteCard = ({invite, id}) => {
                     </MenuGroup>
                 </Menu>
                 </div>
-            <div className='flex '>
+            <div className='flex'>
                 <div className='w-30'>
                     <img className='w-full h-full' src={Celebration} alt='celebration' />
                 </div>
-                <div className='w-full mx-2 '>
+                <div className='w-full mx-2 h-14'>
                     <div className='w-full h-16 '>
-                        <p className='text-left leading-tight line-clamp'>Description: {invite.description}
+                        <p className='text-left leading-tight line-clamp h-15'>Description: {invite.description}
                         </p>
                     </div>
                     <div className='text-left '>

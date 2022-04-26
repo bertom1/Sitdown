@@ -9,21 +9,18 @@ const Step4 = (props) => {
     <>
       <div className="grid justify-items-center">
         {/* <p>Finish and Post</p> */}
-        <div className="bg-slate-400 box-border h-32 w-64 px-2 rounded-md">
-          <div className="box-border w-50 h-24 rounded-md bg-white my-2">
-            {props.state.title}
-            <br></br>
-            {props.state.date} @ {props.state.time}
-            <br></br>
-            {props.state.address}
-            <br></br>
-            {props.state.description}
-          </div>
-
+        <div className="bg-slate-400 relative box-border h-32 w-64 px-2 rounded-md">
+          {props.state.title}
+          <br></br>
+          {props.state.date} @ {props.state.time}
+          <br></br>
+          {props.state.address}
+          <br></br>
+          {props.state.description}
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4 top-1/2 right"
+              className="w-4 h-4 absolute bottom-1.5 right-1.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -38,7 +35,7 @@ const Step4 = (props) => {
           </button>
         </div>
 
-        <div className="bg-slate-200 box-border h-32 w-64 px-2 overflow-auto rounded-md my-2">
+        <div className="bg-slate-200 box-border h-32 w-64 px-2 relative overflow-auto rounded-md my-2">
           <ul className="grid grid-cols-2 gap-1 py-2">
             {props.state.guests.map((people, index) => (
               <li
@@ -52,7 +49,7 @@ const Step4 = (props) => {
           <button onClick={props.previous}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-4 w-4 absolute bottom-1.5 right-1.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -67,7 +64,7 @@ const Step4 = (props) => {
           </button>
         </div>
 
-        <div className="bg-slate-50 box-border h-32 w-64 px-2 rounded-md py-2 my-2">
+        <div className="bg-slate-50 box-border relative h-32 w-64 px-2 rounded-md py-2 my-2">
           <ul className="grid grid-flow-cols gap-1 space-between overflow-x-auto ">
             {props.state.items.map((item, index) => (
               <li
@@ -83,7 +80,7 @@ const Step4 = (props) => {
           <button onClick={props.previous}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
+              className="h-4 w-4 absolute bottom-1.5 right-1.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

@@ -39,13 +39,6 @@ export const SB = (props) => {
             onChange={props.handleChange}
           />
         </StandaloneSearchBox>
-        {/* list selected result from search options */}
-        {/* <ol>
-          {p.map(({ place_id, formatted_address, geometry: { location } }) => (
-            <li key={place_id}>{/* {formatted_address} */}
-            {/* </li> */}
-          {/* ))}
-         </ol>  */}
         
       </div>
     );

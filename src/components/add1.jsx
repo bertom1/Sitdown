@@ -82,7 +82,6 @@ const Step1 = (props) => {
               name="time"
               id="time"
               class="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
-              required
               value={props.time} // Prop: The email input data
               onChange={props.handleChange} // Prop: Puts data into the state
             />

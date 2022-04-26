@@ -1,4 +1,3 @@
-import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
 import React, { Component } from "react";
 import Step1 from "../components/add1";
 import Step2 from "../components/add2";

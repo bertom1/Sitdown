@@ -6,7 +6,7 @@ import { BsChatLeftDots } from "react-icons/bs";
 
 const BottomNav = () => {
   return (
-    <div class="w-full h-screen">
+    <div class="w-full h-20">
       <nav
         id="bottom-nav"
         class="container block fixed inset-x-0 bottom-0 py-2 z-10 bg-pink"
