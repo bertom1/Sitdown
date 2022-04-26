@@ -69,6 +69,11 @@ export const EventProvider = ({children}) => {
         updatedEvents[targetEvent] = te
         setEvents(updatedEvents)
     }
+    const updateEvent = (targetEvent, newEvent) => {
+        let updatedEvents = [...events]
+        updatedEvents[targetEvent] = newEvent
+        setEvents(updatedEvents)
+    }
     const contextVals = {
         events: events,
         addEvent: (e) => setEvents([...events, e]),
@@ -76,7 +81,8 @@ export const EventProvider = ({children}) => {
         removeItem: (te, ti) => removeItem(te, ti),
         addItem: (te, ti) => addItem(te, ti),
         addOther: (te, ti) => addOther(te, ti),
-        invUser: (te, u) => invUser(te, u)
+        invUser: (te, u) => invUser(te, u),
+        updateEvent: (te, ne) => updateEvent(te, ne)
     }
     return <EventContext.Provider value={contextVals} >
         {children}

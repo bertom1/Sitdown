@@ -10,7 +10,10 @@ import { LoadScript } from "@react-google-maps/api";
 import { EventPage } from "./components/Event Page";
 import { InvitePage } from './components/Invite Page'
 import { ProfilePage } from "./components/Profile Page";
-
+// import Dogs from "./pages/Dogs";
+// import Cats from "./pages/Cats";
+// import Sheeps from "./pages/Sheeps";
+// import Goats from "./pages/Goats";
 const e = {
   id: 0,
   title: `Random Event`,
@@ -47,7 +50,8 @@ function App() {
                 <Route path="/chat" element={<></>} />
                 <Route path="/profile" element={<ProfilePage />} />
               </Routes>
-              
+
+
               <BottomNav />
             </BrowserRouter>
           </InviteProvider>

@@ -5,6 +5,7 @@ import { GoogleMap, Marker } from '@react-google-maps/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEvent } from '../../Context/EventContext'
+import { SB } from '../searchbox'
 
 const EventPage = () => {
     const e = {
@@ -19,16 +20,19 @@ const EventPage = () => {
         description: `...`
     }
     const nav = useNavigate()
-    const {events, delEvent, removeItem, addItem, addOther, invUser } = useEvent()
+    const {events, delEvent, removeItem, addItem, addOther, invUser, updateEvent } = useEvent()
     let { id } = useParams()
     id = Number(id)
     const [event, setEvent] = useState(e)
     const [selectedItem, setSelectedItem] = useState('')
     const [otherInput, setOther] = useState('')
     const [user, setUser] = useState('')
+    const [editedEvent, setEditedEvent] = useState({...event})
+    const [edit, setEdit] = useState(false)
     useEffect(() => {
         setEvent(events[id])
-    }, [events, id])
+        setEditedEvent(event)
+    }, [events, id, event])
     const Map = ({loc}) => 
     {return <GoogleMap 
             mapContainerStyle={{
@@ -68,7 +72,27 @@ const EventPage = () => {
             nav('/', {replace: true})
         }
     }
-    return <div>
+    const handleEdit = e => {
+        setEditedEvent({
+            ...editedEvent,
+            [e.target.name]: e.target.value
+        })
+    }
+    const handleLocationChange = (locInput) => {
+        const {formatted_address, geometry: { location } } = locInput
+        const coordinates = {
+          lat: location.lat(),
+          lng: location.lng()
+        }
+        setEditedEvent({
+            ...editedEvent,
+          address: formatted_address,
+          geolocation: coordinates
+        })
+      }
+    return <div>{
+            !edit ?
+            <div>
         <img className='mx-auto' src={Celebration} alt='celebration'/>
         <div className='text-center flex flex-col justify-center'>
             <p>{event.title}</p>
@@ -78,7 +102,7 @@ const EventPage = () => {
             </div>
             <div className='flex justify-center' >
                 <AiOutlineClockCircle size={18} className='mt-1 mr-2' />
-                <p>{formatTime(event.time)}</p>
+                {formatTime(event.time)}
             </div>
             <div className='flex flex-col '>
             <div className='flex justify-center' >
@@ -142,11 +166,11 @@ const EventPage = () => {
                     <p>Guests:</p>
                     <div className='flex ml-5'>
                     {
-                    <form className='flex' onSubmit={(e) => {
-                        e.preventDefault()
-                        invUser(id, user)
-                        setUser('')
-                    }} >
+                        <form className='flex' onSubmit={(e) => {
+                            e.preventDefault()
+                            invUser(id, user)
+                            setUser('')
+                        }} >
                         <label className='flex'> 
                             Invite User:
                             <div className='relative' >
@@ -170,13 +194,54 @@ const EventPage = () => {
                 </div>
         </div> 
         <div className='mt-5'>
-            <button className='rounded-lg px-5 py-1 bg-gray-400 mr-4' >
+            <button className='rounded-lg px-5 py-1 bg-gray-400 mr-4' onClick={() => setEdit(true)} >
                 Edit Event
             </button>
             <button type='button' onClick={handleDelete} className='rounded-lg px-5 py-1 bg-red-500 text-white'>
                 Leave Event
             </button>
         </div>
+    </div>
+    :
+    <div>
+        <img className='mx-auto' src={Celebration} alt='celebration'/>
+        <div className=' mt-2 text-center flex flex-col justify-center'>
+            <label>
+                Event Title: 
+                <input name='title' onChange={handleEdit} value={editedEvent.title} className='border-2 ml-1' type='text' />
+            </label>
+            <div className='flex justify-center'>
+                <AiOutlineCalendar size={18} className='mt-1 mr-2' />
+                Date:
+                <input name='date' onChange={handleEdit} value={editedEvent.date}className='ml-1' type='date'/>
+            </div>
+            <div className='flex justify-center' >
+                <AiOutlineClockCircle size={18} className='mt-1 mr-2' />
+                Time:
+                <input name='time' onChange={handleEdit} value={editedEvent.time} className='ml-1' type='time' />
+            </div>
+            <div className='flex flex-col '>
+                <div className='flex justify-center' >
+                    <GoLocation size={18} className='mt-1 mr-1' />
+                    <SB handleChange={handleLocationChange} />
+                </div>
+            </div>
+            <div className='mt-2'>
+                <button className='rounded-lg px-5 py-1 bg-gray-400 mr-4' onClick={() => {
+                    updateEvent(id, editedEvent)
+                    setEdit(false)
+                }}>
+                    Submit Edit
+                </button>
+                <button className='rounded-lg px-5 py-1 bg-red-500 text-white' onClick={() =>{
+                    setEdit(false)
+                }}>
+                    Cancel Edit
+                </button>
+            </div>
+        </div>
+    </div>
+    }
     </div>
 }
 
