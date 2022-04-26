@@ -9,8 +9,8 @@ const Step3 = (props) => {
     <>
       <div>
         <form className="relative">
-          <label class=" relative text-gray-400 block px-2">
-            <span class="block text-xs font-medium text-slate-700 text-left px-2">
+          <label className=" relative text-gray-400 block px-2">
+            <span className="block text-xs font-medium text-slate-700 text-left px-2">
               Item
             </span>
 
@@ -34,13 +34,17 @@ const Step3 = (props) => {
               name="itemName"
               id="itemName"
               placeholder="add things to bring"
-              class="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
-              value={props.itemName} // Prop: The email input data
-              onChange={props.handleChange} // Prop: Puts data into the state
+              className="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
+              value={props.itemName} 
+              onChange={props.handleChange} 
             />
           </label>
 
-          {/* <label class=" relative text-gray-400 block py-2 justify-items-center px-2">
+          {/* 
+          
+          category dropdown option
+
+          <label class=" relative text-gray-400 block py-2 justify-items-center px-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 pointer-events-none absolute top-1/2 transform -translate-y-2/3 left-4"
@@ -70,6 +74,7 @@ const Step3 = (props) => {
               <option value="party-goods">party goods</option>
             </select>
           </label> */}
+          
         </form>
         <button
           className="bg-lightpink px-2 py-1 rounded-md m-2 "
@@ -91,11 +96,10 @@ const Step3 = (props) => {
             />
           </svg>
         </button>
-        <ul className="grid grid grid-cols-4 grid-rows-8 gap-2 space-between">
+        <ul className="grid grid grid-cols-4 grid-rows-8 gap-2 space-between px-2">
           {props.items.map((item, index) => (
             <li
               key={index}
-              //id={item.category}
               className="overflow-hidden px-2 py-1 bg-slate-300 text-xs rounded-md mb-1 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
             >
               {item}

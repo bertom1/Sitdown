@@ -8,7 +8,6 @@ const Step4 = (props) => {
   return (
     <>
       <div className="grid justify-items-center">
-        {/* <p>Finish and Post</p> */}
         <div className="bg-slate-400 relative box-border h-32 w-64 px-2 rounded-md">
           {props.state.title}
           <br></br>
@@ -69,7 +68,6 @@ const Step4 = (props) => {
             {props.state.items.map((item, index) => (
               <li
                 key={index}
-                //id={item.category}
                 className="overflow-hidden px-1 py-1 border-2 border-slate-500 text-xs rounded-md mb-1 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
               >
                 {item}
@@ -101,4 +99,3 @@ const Step4 = (props) => {
 
 export default Step4;
 
-//insert the final step here where we can view all of the info so far and edit / submit

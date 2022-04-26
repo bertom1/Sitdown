@@ -5,11 +5,7 @@ import Step3 from "../components/add3";
 import Step4 from "../components/add4";
 import MultiStepProgressBar from "../components/ProgressBar";
 import { Navigate } from "react-router-dom";
-//import {addEvent} from "../Context/EventContext"
-//import  from "../Context/EventContext";
-//import contextVals from '../Context/EventContext';
-import { EventContext , EventProvider } from "../Context/EventContext";
-import { AiTwotoneRightSquare } from "react-icons/ai";
+import { EventContext } from "../Context/EventContext";
 
 class MasterForm extends Component {
   static contextType = EventContext;
@@ -17,7 +13,6 @@ class MasterForm extends Component {
   constructor(props) {
     super(props);
 
-    // Set the intial input values
     this.state = {
       currentStep: 1,
       redirect: false,
@@ -61,7 +56,7 @@ class MasterForm extends Component {
     console.log(this.state.guests);
   };
 
-  //delete's names - when there's more than one occurence, this deletes all occurences
+  //delete's specified person
   handleDeletePerson = (name) => {
     console.log(name);
     this.setState((prevState) => ({
@@ -74,14 +69,14 @@ class MasterForm extends Component {
     this.setState((prevState) => ({
       items: [
         ...prevState.items,
-         prevState.itemName,
+        prevState.itemName,
       ],
       itemName: "",
     }));
     console.log(this.state.items);
   };
 
-  //delete's names - when there's more than one occurence, this deletes all occurences
+
   handleDeleteItem = (partyStuff) => {
     this.setState((prevState) => ({
       items: prevState.items.filter(
@@ -91,7 +86,7 @@ class MasterForm extends Component {
     console.log(this.state.guests);
   };
 
-  // Trigger an alert on form submission
+  // submit state to context
   handleSubmit = (event) => {
      event.preventDefault();
     const { addEvent } = this.context;
@@ -101,15 +96,11 @@ class MasterForm extends Component {
       ...this.state,
       redirect: true,
     })
-    // const { title, date, time } = this.state;
-    // alert(`Your registration detail: \n 
-    //    Email: ${title} \n 
-    //    Username: ${date} \n
-    //    Password: ${time}`);
+
   };
 
   // Test current step with ternary
-  // _next and _previous functions will be called on button click
+  // _next function will be called on button click
   _next() {
     let currentStep = this.state.currentStep;
 
@@ -151,7 +142,7 @@ class MasterForm extends Component {
 
   get nextButton() {
     let currentStep = this.state.currentStep;
-    // If the current step is not 3, then render the "next" button
+    // If the current step is not 4, then render the "next" button
     if (currentStep < 4) {
       return (
         <button
@@ -187,21 +178,17 @@ class MasterForm extends Component {
          return <Navigate to="/" />;
        }
     return (
-      // <EventProvider value={this.state}>
-        <div
-          className="w-full block"
-          //onSubmit={console.log("help now")}
-        >
-          {/* <div className="box-border h-32 px-6"> */}
-          <div className="box-border h-5 w-32 block text-sm font-medium text-slate-700">
-            {/* Add New Event */}
+      
+        <div className="w-full block">
+          
+          <div className="box-border h-5 w-32 block text-sm font-medium text-slate-700">  
           </div>
           <div className="w-full">
             <div className="w-full">
               <MultiStepProgressBar currentStep={this.state.currentStep} />
             </div>
             <div />
-            <div classname="py-50">
+            <div className="py-50">
               <Step1
                 currentStep={this.state.currentStep}
                 handleChange={this.handleChange}
@@ -217,7 +204,6 @@ class MasterForm extends Component {
               <Step3
                 currentStep={this.state.currentStep}
                 handleChange={this.handleChange}
-                //itemCategory={this.state.itemCategory}
                 itemName={this.state.itemName}
                 handleAddNewItem={this.handleAddNewItem}
                 handleDeleteItem={this.handleDeleteItem}
@@ -236,9 +222,7 @@ class MasterForm extends Component {
             {this.nextButton}
             {this.submitButton}
           </div>
-          {/* </div> */}
         </div>
-      // </EventProvider>
     );
   }
 }
