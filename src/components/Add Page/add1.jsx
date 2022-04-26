@@ -1,6 +1,6 @@
 import React from "react";
 import "./MultiStepProgressBar.css";
-import { SB } from "./searchbox";
+import { SB } from "../searchbox";
 
 const Step1 = (props) => {
   if (props.currentStep !== 1) {

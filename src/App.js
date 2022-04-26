@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TopNav from "./components/TopNav";
 import BottomNav from "./components/BottomNav";
-import AddPage from "./pages/AddPage";
 import { EventContainer } from "./components/Event Container";
 import { EventProvider, InviteProvider } from "./Context/EventContext";
 import { UserProvider } from "./Context/UserContext";
@@ -10,10 +9,7 @@ import { LoadScript } from "@react-google-maps/api";
 import { EventPage } from "./components/Event Page";
 import { InvitePage } from './components/Invite Page'
 import { ProfilePage } from "./components/Profile Page";
-// import Dogs from "./pages/Dogs";
-// import Cats from "./pages/Cats";
-// import Sheeps from "./pages/Sheeps";
-// import Goats from "./pages/Goats";
+import { AddPage } from "./components/Add Page";
 const e = {
   id: 0,
   title: `Random Event`,
@@ -50,15 +46,11 @@ function App() {
                 <Route path="/chat" element={<></>} />
                 <Route path="/profile" element={<ProfilePage />} />
               </Routes>
-
-
               <BottomNav />
             </BrowserRouter>
           </InviteProvider>
         </EventProvider>
-                                             
       </UserProvider>
-
       </LoadScript>
     </div>
   );

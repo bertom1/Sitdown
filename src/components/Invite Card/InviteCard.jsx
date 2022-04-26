@@ -31,7 +31,7 @@ const InviteCard = ({invite, id}) => {
         const timeArray = time.split(':')
         let hr = Number(timeArray[0])
         const end = hr / 12 >= 1 ? 'PM' : 'AM'
-        const timeStr = `${hr % 12}:${timeArray[1]} ${end}`
+        const timeStr = `${hr % 12 !== 0 ? hr % 12 : '12'}:${timeArray[1]} ${end}`
         return timeStr
     }
     return <div className='w-full h-48 border-2 border-black rounded-xl px-2 mb-2 relative' onClick={()=>nav(`/invite/${id}`, {replace: true})}>

@@ -69,7 +69,7 @@ const InvitePage = () => {
         const timeArray = time.split(':')
         let hr = Number(timeArray[0])
         const end = hr / 12 >= 1 ? 'PM' : 'AM'
-        const timeStr = `${hr % 12}:${timeArray[1]} ${end}`
+        const timeStr = `${hr % 12 !== 0 ? hr % 12 : '12'}:${timeArray[1]} ${end}`
         return <p>{timeStr}</p>
     }
     return <div>
