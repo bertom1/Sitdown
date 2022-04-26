@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { StandaloneSearchBox } from "@react-google-maps/api";
 
 /**
@@ -13,19 +12,18 @@ export const SB = (props) => {
         refs.searchBox = ref;
     }
     // const [p, setP] = useState([])
-    // const onPlacesChanged = () => {
-    //     const places = refs.searchBox.getPlaces()
-    //     setP(places);
-    //     console.log(places);
+    const onPlacesChanged = () => {
+        const places = refs.searchBox.getPlaces()
+        props.handleChange(places[places.length - 1]);
        
-    // }
+    }
     return (
       <div>
         <StandaloneSearchBox
           onLoad={onSearchBoxMounted}
           //onChange={props.handleChange}
           //value={props.location}
-          //onPlacesChanged={onPlacesChanged}
+          onPlacesChanged={onPlacesChanged}
         >
           <input
             type="text"
@@ -34,9 +32,9 @@ export const SB = (props) => {
             placeholder="search address"
             class="text-sm form-input border border-slate-300 rounded-md py-2 px-2 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
             required
-            value={props.address}
+            // value={props.address}
             //value={p}
-            onChange={props.handleChange}
+            // onChange={props.handleChange}
           />
         </StandaloneSearchBox>
         {/* list selected result from search options */}

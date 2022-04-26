@@ -15,6 +15,18 @@ const EventCard = ({event, id}) => {
     const layerButton = (e) => {
         e.stopPropagation()
     }
+    const formatDate = (date) => {
+        const dateArray = date.split('-')
+        const dateString = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`
+        return dateString
+    }
+    const formatTime = (time) => {
+        const timeArray = time.split(':')
+        let hr = Number(timeArray[0])
+        const end = hr / 12 >= 1 ? 'PM' : 'AM'
+        const timeStr = `${hr % 12}:${timeArray[1]} ${end}`
+        return timeStr
+    }
     return <div onClick={()=>nav(`/event/${id}`, {replace: true})} className='w-full h-40 border-2 border-black rounded-xl px-2 mb-2 relative'>
             <div className='flex justify-center'>
                 <h3 className='max-w-xs truncate'>{event.title}</h3>
@@ -37,8 +49,8 @@ const EventCard = ({event, id}) => {
                         </p>
                     </div>
                     <div className='text-left'>
-                        <p>Date: {event.date}</p>
-                        <p>Time: {event.time}</p>
+                        <p>Date: {formatDate(event.date)}</p>
+                        <p>Time: {formatTime(event.time)}</p>
                     </div>
                 </div>
             </div>
