@@ -14,11 +14,13 @@ const InviteCard = ({invite, id}) => {
     const layerButton = (e) => {
         e.stopPropagation()
     }
-    const handleAdd = () => {
+    const handleAdd = (e) => {
+        e.stopPropagation()
         addEvent(invite)
         delInv(id)
     }
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.stopPropagation()
         if (window.confirm('Are you sure you want to decline the invite? \nYou will need to request a new invite if you decide change your mind after deleting.'))
         delInv(id)
     }

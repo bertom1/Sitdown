@@ -7,14 +7,14 @@ import { StandaloneSearchBox } from "@react-google-maps/api";
  * this will allow the value returned for onPlacesChanged to be used outside of the component
  */
 export const SB = (props) => {
-    const refs = {}
+    const refs = {searchBox:{}}
     const onSearchBoxMounted= ref => {
         refs.searchBox = ref;
     }
     // const [p, setP] = useState([])
     const onPlacesChanged = () => {
         const places = refs.searchBox.getPlaces()
-        props.handleChange(places[places.length - 1]);
+        props.handleChange(places[0]);
        
     }
     return (

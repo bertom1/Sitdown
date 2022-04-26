@@ -90,7 +90,7 @@ const Step1 = (props) => {
             />
           </label>
 
-          <label className="py-2 relative text-gray-400 focus-within:text-gray-600 block">
+          <div className="py-2 relative text-gray-400 focus-within:text-gray-600 block">
             <span className="block text-xs font-medium text-slate-700 text-left px-2">
               Event Location
             </span>
@@ -115,7 +115,7 @@ const Step1 = (props) => {
               />
             </svg>
             <SB handleChange={props.handleLocationChange} />
-          </label>
+          </div>
 
           <label className="block py-2">
             <span className="block text-xs font-medium text-slate-700 text-left text-top px-2">

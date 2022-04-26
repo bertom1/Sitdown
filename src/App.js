@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
     
-      <LoadScript googleMapsApiKey="AIzaSyAuFzEe4kobTk82fqLz3Qz3UyIPhfKX1nk" libraries={scriptLibraries}>
+      <LoadScript googleMapsApiKey="AIzaSyAQzP0U-AipYSrDUlPxgV8uwQJvEQj1Paw" libraries={scriptLibraries}>
       <UserProvider >
         <EventProvider>
           <InviteProvider>
