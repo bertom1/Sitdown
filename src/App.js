@@ -10,7 +10,6 @@ import { LoadScript } from "@react-google-maps/api";
 import { EventPage } from "./components/Event Page";
 import { InvitePage } from './components/Invite Page'
 import { ProfilePage } from "./components/Profile Page";
-import { Chatbox } from "./components/Chatbox/Chatbox.html";
 // import Dogs from "./pages/Dogs";
 // import Cats from "./pages/Cats";
 // import Sheeps from "./pages/Sheeps";
@@ -48,7 +47,7 @@ function App() {
                 <Route path="/event/:id" element={<EventPage />} />
                 <Route path="/invite/:id" element={<InvitePage />} />
                 <Route path="/add" element={<AddPage />} />
-                <Route path="/chat" element={<Chatbox/>}/>
+                <Route exact path="/chat" render={() => {window.location.href="Chatbox.html"}} />
                 <Route path="/profile" element={<></>} />
               </Routes>
 
