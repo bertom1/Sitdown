@@ -8,15 +8,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 10px, solid, black;
 }
 
 /* instead change it to active/nonactive step... */
 .indexedStep.accomplished {
     color: rgb(0, 0, 0);
     background-color: #FFB7B7;
-    border: 10px, solid , black;
-   
 }
 
 ul{
