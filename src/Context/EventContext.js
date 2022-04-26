@@ -30,7 +30,7 @@ export const EventProvider = ({children}) => {
         myItems: ['Nachos', 'item', 'Cats'],
         guests: [{name: 'John', items:['Avocado', 'forks']}, {name: 'Dylan', items: ['banana', 'something random']}],
         items: ['cups', 'plates', 'doughnuts'],
-        description: `Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ip has been the industry's standard dummy text ever since the 1500s`,
         address:'1600 Pennsylvania Avenue NW, Washington, DC 20500',
         geolocation:{lat: 38.8977, lng: -77.0365},

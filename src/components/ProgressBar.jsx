@@ -85,8 +85,7 @@ const MultiStepProgressBar = (props) => {
             List
           </li>
           <li>
-            Party <br />
-            Plan
+            Item <br /> List
           </li>
           <li>
             Finish <br /> Up

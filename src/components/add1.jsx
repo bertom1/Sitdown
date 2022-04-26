@@ -14,31 +14,31 @@ const Step1 = (props) => {
     <>
       <div className="grid justify-items-center">
         <form className="relative">
-          <label class="block py-2">
-            <span class="block text-xs font-medium text-slate-700 text-left px-2">
-              Event Name
+          <label className="block py-2">
+            <span className="block text-xs font-medium text-slate-700 text-left px-2">
+              Event Title
             </span>
             <input
               type="text"
               name="title"
               id="title"
-              placeholder="appropriate event title"
+              placeholder="type event title"
               className="w-full mt-.5 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               required
-              value={props.title} // Prop: The email input data
-              onChange={props.handleChange} // Prop: Puts data into the state
+              value={props.title} 
+              onChange={props.handleChange}
             />
           </label>
 
-          <label class=" relative text-gray-400 block">
-            <span class="block text-xs font-medium text-slate-700 text-left px-2">
+          <label className=" relative text-gray-400 block">
+            <span className="block text-xs font-medium text-slate-700 text-left px-2">
               Event Date
             </span>
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="pointer-events-none w-6 h-6 absolute top-2/3 transform -translate-y-2/3 left-3"
+              className="pointer-events-none w-6 h-6 absolute top-2/3 transform -translate-y-2/3 left-3"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -55,19 +55,19 @@ const Step1 = (props) => {
               type="date"
               name="date"
               id="date"
-              class="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
-              value={props.date} // Prop: The email input data
-              onChange={props.handleChange} // Prop: Puts data into the state
+              className="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
+              value={props.date} 
+              onChange={props.handleChange} 
             />
           </label>
 
-          <label class="py-2 relative text-gray-400 focus-within:text-gray-600 block">
-            <span class="block text-xs font-medium text-slate-700 text-left px-2">
+          <label className="py-2 relative text-gray-400 focus-within:text-gray-600 block">
+            <span className="block text-xs font-medium text-slate-700 text-left px-2">
               Event Time
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="pointer-events-none w-6 h-6 absolute top-2/3 transform -translate-y-2/3 left-3"
+              className="pointer-events-none w-6 h-6 absolute top-2/3 transform -translate-y-2/3 left-3"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -84,21 +84,20 @@ const Step1 = (props) => {
               type="time"
               name="time"
               id="time"
-              class="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
-              required
-              value={props.time} // Prop: The email input data
-              onChange={props.handleChange} // Prop: Puts data into the state
+              className="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
+              value={props.time} 
+              onChange={props.handleChange} 
             />
           </label>
 
-          <label class="py-2 relative text-gray-400 focus-within:text-gray-600 block">
-            <span class="block text-xs font-medium text-slate-700 text-left px-2">
+          <label className="py-2 relative text-gray-400 focus-within:text-gray-600 block">
+            <span className="block text-xs font-medium text-slate-700 text-left px-2">
               Event Location
             </span>
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="pointer-events-none w-6 h-6 absolute top-2/3 transform -translate-y-2/3 left-2"
+              className="pointer-events-none w-6 h-6 absolute top-2/3 transform -translate-y-2/3 left-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -118,8 +117,8 @@ const Step1 = (props) => {
             <SB handleChange={props.handleLocationChange} />
           </label>
 
-          <label class="block py-2" for="description">
-            <span class="block text-xs font-medium text-slate-700 text-left text-top px-2">
+          <label className="block py-2">
+            <span className="block text-xs font-medium text-slate-700 text-left text-top px-2">
               description
             </span>
             <textarea
@@ -131,8 +130,8 @@ const Step1 = (props) => {
               className="w-full h-24 mt-.5 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               required
-              value={props.description} // Prop: The email input data
-              onChange={props.handleChange} // Prop: Puts data into the state
+              value={props.description} 
+              onChange={props.handleChange} 
             />
           </label>
         </form>
