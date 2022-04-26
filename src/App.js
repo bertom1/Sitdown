@@ -10,7 +10,7 @@ import { LoadScript } from "@react-google-maps/api";
 import { EventPage } from "./components/Event Page";
 import { InvitePage } from './components/Invite Page'
 import { ProfilePage } from "./components/Profile Page";
-import { Chatbox } from "./components/Chatbox/Chatbox";
+import { Chatbox } from "./components/Chatbox/Chatbox.html";
 // import Dogs from "./pages/Dogs";
 // import Cats from "./pages/Cats";
 // import Sheeps from "./pages/Sheeps";
