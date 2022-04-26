@@ -6,6 +6,9 @@ const Step1 = (props) => {
   if (props.currentStep !== 1) {
     return null;
   }
+  const handleChange = (loc) => {
+    props.handleLocationChange(loc)
+  }
 
   return (
     <>
@@ -111,7 +114,7 @@ const Step1 = (props) => {
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <SB />
+            <SB handleChange={props.handleLocationChange} />
           </label>
 
           <label className="block py-2">

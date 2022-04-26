@@ -25,7 +25,7 @@ export function useInvite() {
 export const EventProvider = ({children}) => {
     let [events, setEvents] = useState([{
         title: `Rachel's birthday`,
-        date: '10/11/2022',
+        date: '2022-10-11',
         time: '19:00',
         myItems: ['Nachos', 'item', 'Cats'],
         guests: [{name: 'John', items:['Avocado', 'forks']}, {name: 'Dylan', items: ['banana', 'something random']}],
@@ -86,8 +86,8 @@ export const EventProvider = ({children}) => {
 export const InviteProvider = ({children}) => {
     let [invites, setInvites] = useState([{
         title: `Jack's Birthday Party`,
-        date: '09/21/2023',
-        time: '6:00 PM',
+        date: '2023-09-21',
+        time: '18:00',
         myItems: [],
         guests: [{name: 'Adam', items:['Plates', 'Forks', 'Cups']}, {name: 'Dylan', items: ['Brownies', 'Candles']}, {name:'Jessica', items:['Pizza, Breadsticks']}, {name:'Tom', items:['Chicken Wings']}],
         items: ['Soda', 'Potato Chips', 'Mac and Cheese', 'Hummus'],

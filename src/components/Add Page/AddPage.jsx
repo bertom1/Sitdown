@@ -20,6 +20,7 @@ class MasterForm extends Component {
       date: "",
       time: 0,
       address: "",
+      geolocation:{}, 
       description: "",
       person: "",
       guests: [],
@@ -30,7 +31,7 @@ class MasterForm extends Component {
 
     // Bind the submission to handleChange()
     this.handleChange = this.handleChange.bind(this);
-
+    this.handleLocationChange = this.handleLocationChange.bind(this);
     // Bind new functions for next and previous
     this._next = this._next.bind(this);
     this._prev = this._prev.bind(this);
@@ -44,6 +45,19 @@ class MasterForm extends Component {
     });
 
     console.log(name, value);
+  }
+
+  handleLocationChange(locInput) {
+    console.log(locInput)
+    const {formatted_address, geometry: { location } } = locInput
+    const coordinates = {
+      lat: location.lat(),
+      lng: location.lng()
+    }
+    this.setState({
+      address: formatted_address,
+      geolocation: coordinates
+    })
   }
 
   handleAddNewPerson = () => {
@@ -192,6 +206,7 @@ class MasterForm extends Component {
               <Step1
                 currentStep={this.state.currentStep}
                 handleChange={this.handleChange}
+                handleLocationChange={this.handleLocationChange}
               />
               <Step2
                 currentStep={this.state.currentStep}

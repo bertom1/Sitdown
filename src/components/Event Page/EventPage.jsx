@@ -50,6 +50,18 @@ const EventPage = () => {
             {rest}
         </p>
     }
+    const formatDate = (date) => {
+        const dateArray = date.split('-')
+        const dateString = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`
+        return <p>{dateString}</p>
+    }
+    const formatTime = (time) => {
+        const timeArray = time.split(':')
+        let hr = Number(timeArray[0])
+        const end = hr / 12 >= 1 ? 'PM' : 'AM'
+        const timeStr = `${hr % 12}:${timeArray[1]} ${end}`
+        return <p>{timeStr}</p>
+    }
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to leave this event? \nYou will need to request a new invite if you decide change your mind after deleting.')){
             delEvent(id)
@@ -62,11 +74,11 @@ const EventPage = () => {
             <p>{event.title}</p>
             <div className='flex justify-center'>
                 <AiOutlineCalendar size={18} className='mt-1 mr-2' />
-                <p>{event.date}</p>
+                {formatDate(event.date)}
             </div>
             <div className='flex justify-center' >
                 <AiOutlineClockCircle size={18} className='mt-1 mr-2' />
-                <p>{event.time}</p>
+                <p>{formatTime(event.time)}</p>
             </div>
             <div className='flex flex-col '>
             <div className='flex justify-center' >
