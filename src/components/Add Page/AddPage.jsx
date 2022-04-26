@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Step1 from "../components/add1";
-import Step2 from "../components/add2";
-import Step3 from "../components/add3";
-import Step4 from "../components/add4";
-import MultiStepProgressBar from "../components/ProgressBar";
+import Step1 from "./add1";
+import Step2 from "./add2";
+import Step3 from "./add3";
+import Step4 from "./add4";
+import MultiStepProgressBar from "./ProgressBar";
 import { Navigate } from "react-router-dom";
-import { EventContext } from "../Context/EventContext";
+import { EventContext } from "../../Context/EventContext";
 
 class MasterForm extends Component {
   static contextType = EventContext;
