@@ -47,7 +47,7 @@ function App() {
                 <Route path="/event/:id" element={<EventPage />} />
                 <Route path="/invite/:id" element={<InvitePage />} />
                 <Route path="/add" element={<AddPage />} />
-                <Route exact path="/chat" render={() => {window.location.href="Chatbox.html"}} />
+                <Route path="/chat" element={<Chat />} />
                 <Route path="/profile" element={<></>} />
               </Routes>
 
