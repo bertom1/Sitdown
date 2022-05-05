@@ -192,52 +192,51 @@ class MasterForm extends Component {
          return <Navigate to="/" />;
        }
     return (
-      
-        <div className="w-full block">
-          
-          <div className="box-border h-5 w-32 block text-sm font-medium text-slate-700">  
-          </div>
+      <div className="w-full block">
+        <div className="box-border h-5 w-32 block text-sm font-medium text-slate-700"></div>
+        <div className="w-full">
           <div className="w-full">
-            <div className="w-full">
-              <MultiStepProgressBar currentStep={this.state.currentStep} />
-            </div>
-            <div />
-            <div className="py-50">
-              <Step1
-                currentStep={this.state.currentStep}
-                handleChange={this.handleChange}
-                handleLocationChange={this.handleLocationChange}
-              />
-              <Step2
-                currentStep={this.state.currentStep}
-                handleChange={this.handleChange}
-                person={this.state.person}
-                guests={this.state.guests}
-                handleAddNewPerson={this.handleAddNewPerson}
-                handleDeletePerson={this.handleDeletePerson}
-              />
-              <Step3
-                currentStep={this.state.currentStep}
-                handleChange={this.handleChange}
-                itemName={this.state.itemName}
-                handleAddNewItem={this.handleAddNewItem}
-                handleDeleteItem={this.handleDeleteItem}
-                items={this.state.items}
-              />
-              <Step4
-                currentStep={this.state.currentStep}
-                handleChange={this.handleChange}
-                state={this.state}
-                previous={this._prev}
-              />
-            </div>
+            <MultiStepProgressBar currentStep={this.state.currentStep} />
           </div>
-          <div>
-            {this.previousButton}
-            {this.nextButton}
-            {this.submitButton}
+          <div />
+          <div className="py-50">
+            <Step1
+              currentStep={this.state.currentStep}
+              handleChange={this.handleChange}
+              handleLocationChange={this.handleLocationChange}
+            />
+            <Step2
+              currentStep={this.state.currentStep}
+              handleChange={this.handleChange}
+              person={this.state.person}
+              guests={this.state.guests}
+              handleAddNewPerson={this.handleAddNewPerson}
+              handleDeletePerson={this.handleDeletePerson}
+            />
+            <Step3
+              currentStep={this.state.currentStep}
+              handleChange={this.handleChange}
+              itemName={this.state.itemName}
+              handleAddNewItem={this.handleAddNewItem}
+              handleDeleteItem={this.handleDeleteItem}
+              items={this.state.items}
+            />
+            <Step4
+              currentStep={this.state.currentStep}
+              handleChange={this.handleChange}
+              handleDeleteItem={this.handleDeleteItem}
+              handleDeletePerson={this.handleDeletePerson}
+              state={this.state}
+              previous={this._prev}
+            />
           </div>
         </div>
+        <div>
+          {this.previousButton}
+          {this.nextButton}
+          {this.submitButton}
+        </div>
+      </div>
     );
   }
 }

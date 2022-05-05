@@ -3,6 +3,13 @@ import "./MultiStepProgressBar.css";
 import { SB } from "../searchbox";
 
 const Step1 = (props) => {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, "0");
+  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = yyyy + "-" + mm + "-" + dd;
+
   if (props.currentStep !== 1) {
     return null;
   }
@@ -53,6 +60,7 @@ const Step1 = (props) => {
 
             <input
               type="date"
+              min={today}
               name="date"
               id="date"
               className="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"

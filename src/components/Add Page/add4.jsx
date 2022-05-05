@@ -42,6 +42,26 @@ const Step4 = (props) => {
                 className="px-4 py-2 border-2 border-slate-500 text-sm text-right rounded-md px-2 mb-2 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
               >
                 {people.name}
+                <button
+                  onClick={() => {
+                    props.handleDeletePerson({ people });
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-3 h-3 top-1/2"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
               </li>
             ))}
           </ul>
@@ -63,14 +83,34 @@ const Step4 = (props) => {
           </button>
         </div>
 
-        <div className="bg-slate-50 box-border relative h-32 w-64 px-2 rounded-md py-2 my-2">
-          <ul className="grid grid-flow-cols gap-1 space-between overflow-x-auto ">
+        <div className="bg-slate-50 box-border relative h-32 w-64 px-2 rounded-md overflow-auto py-2 my-2">
+          <ul className="grid grid-cols-2 gap-1 space-between overflow-x-auto ">
             {props.state.items.map((item, index) => (
               <li
                 key={index}
                 className="overflow-hidden px-1 py-1 border-2 border-slate-500 text-xs rounded-md mb-1 bg-white active:bg-gray-400 hover:cursor-pointer flex justify-between"
               >
                 {item}
+                <button
+                  onClick={() => {
+                    props.handleDeleteItem({ item });
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-3 h-3 top-1/2"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
               </li>
             ))}
           </ul>
