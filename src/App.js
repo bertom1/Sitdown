@@ -10,6 +10,7 @@ import { EventPage } from "./components/Event Page";
 import { InvitePage } from './components/Invite Page'
 import { ProfilePage } from "./components/Profile Page";
 import { AddPage } from "./components/Add Page";
+import { Chat } from "./components/Chat Page";
 const e = {
   id: 0,
   title: `Random Event`,
@@ -42,7 +43,7 @@ function App() {
                 <Route path="/event/:id" element={<EventPage />} />
                 <Route path="/invite/:id" element={<InvitePage />} />
                 <Route path="/add" element={<AddPage />} />
-                <Route path="/chat" element={<></>} />
+                <Route path="/chat" element={<Chat />} />
                 <Route path="/profile" element={<ProfilePage />} />
               </Routes>
               <BottomNav />
