@@ -67,7 +67,7 @@ const EventPage = () => {
         return <p>{timeStr}</p>
     }
     const handleDelete = () => {
-        if (window.confirm('Are you sure you want to leave this event? \nYou will need to request a new invite if you decide change your mind after deleting.')){
+        if (window.confirm('Are you sure you want to leave this event?')){
             delEvent(id)
             nav('/', {replace: true})
         }

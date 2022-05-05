@@ -9,11 +9,11 @@ class Chat extends Component {
   
   render(){
     return (
-      <div className="w-full h-full overflow-scroll">
+      <div >
         <h2>Event Chat</h2>
-        <p>
+        {/* <p>
           Click on the button at the bottom of this page to open the chat form.
-        </p>
+        </p> */}
 
         <h2>Chat Messages</h2>
 
@@ -22,7 +22,7 @@ class Chat extends Component {
             src="/w3images/bandmember.jpg"
             alt="Avatar"
             className="chatImage"
-            // style="width:100%;"
+            style={{ width: "100%" }}
           />
           <p>Hello. How are you today?</p>
           <span className="time-right">11:00</span>
@@ -33,7 +33,7 @@ class Chat extends Component {
             src="/w3images/avatar_g2.jpg"
             alt="Avatar"
             className="right chatImage"
-            // style="width:100%;"
+            style={{ width: "100%" }}
           />
           <p>Hey! I'm fine. Thanks for asking!</p>
           <span className="time-left">11:01</span>
@@ -44,7 +44,7 @@ class Chat extends Component {
             src="/w3images/bandmember.jpg"
             alt="Avatar"
             className="chatImage"
-            // style="width:100%;"
+            style={{ width: "100" }}
           />
           <p>Sweet! So, what do you wanna do today?</p>
           <span className="time-right">11:02</span>
@@ -55,8 +55,7 @@ class Chat extends Component {
             src="/w3images/avatar_g2.jpg"
             alt="Avatar"
             className="right chatImage"
-
-            // style="width:100%;"
+            style={{ width: "100%" }}
           />
           <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
           <span className="time-left">11:05</span>
@@ -82,7 +81,11 @@ class Chat extends Component {
             <button type="submit" className="btn">
               Send
             </button>
-            <button type="button" className="btn cancel" onClick={this.closeForm}>
+            <button
+              type="button"
+              className="btn cancel"
+              onClick={this.closeForm}
+            >
               Close
             </button>
           </form>

@@ -32,8 +32,8 @@ const Step1 = (props) => {
               placeholder="type event title"
               className="w-full mt-.5 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-              required
-              value={props.title} 
+              required={true}
+              value={props.title}
               onChange={props.handleChange}
             />
           </label>
@@ -61,11 +61,12 @@ const Step1 = (props) => {
             <input
               type="date"
               min={today}
+              required={true}
               name="date"
               id="date"
               className="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
-              value={props.date} 
-              onChange={props.handleChange} 
+              value={props.date}
+              onChange={props.handleChange}
             />
           </label>
 
@@ -92,9 +93,10 @@ const Step1 = (props) => {
               type="time"
               name="time"
               id="time"
+              required={true}
               className="form-input border border-slate-300 rounded-md py-2 px-3 bg-white placeholder-gray-400 text-gray-500 appearance-none w-full block pl-10 focus:outline-none"
-              value={props.time} 
-              onChange={props.handleChange} 
+              value={props.time}
+              onChange={props.handleChange}
             />
           </label>
 
@@ -138,8 +140,8 @@ const Step1 = (props) => {
               className="w-full h-24 mt-.5 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
               required
-              value={props.description} 
-              onChange={props.handleChange} 
+              value={props.description}
+              onChange={props.handleChange}
             />
           </label>
         </form>
