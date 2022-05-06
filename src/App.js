@@ -44,7 +44,7 @@ function App() {
                 <Route path="/invite/:id" element={<InvitePage />} />
                 <Route path="/add" element={<AddPage />} />
                 <Route path="/chat" element={<Chat />} />
-                <Route path="/profile" element={<></>} />
+                <Route path="/profile" element={<ProfilePage />} />
               </Routes>
               <BottomNav />
             </BrowserRouter>
