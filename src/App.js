@@ -28,8 +28,8 @@ const e = {
   Lorem Ip has been the industry's standard dummy text ever since the 1500s`,
 };
 
+const scriptLibraries = ["places"]
 function App() {
-  const scriptLibraries = ["places"]
   return (
     <div className="App">
     

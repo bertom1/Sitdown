@@ -1,4 +1,5 @@
 import { StandaloneSearchBox } from "@react-google-maps/api";
+import React, { useState } from "react";
 
 /**
  * Sample Componenet for how to use search box
@@ -7,13 +8,12 @@ import { StandaloneSearchBox } from "@react-google-maps/api";
  * this will allow the value returned for onPlacesChanged to be used outside of the component
  */
 export const SB = (props) => {
-    const refs = {searchBox:{}}
-    const onSearchBoxMounted= ref => {
-        refs.searchBox = ref;
-    }
-    // const [p, setP] = useState([])
+    const [searchBox, setSearchBox] = useState(null)
+    const onSearchBoxMounted= React.useCallback(ref => {
+      setSearchBox(ref);
+    }, [])
     const onPlacesChanged = () => {
-        const places = refs.searchBox.getPlaces()
+        const places = searchBox.getPlaces()
         props.handleChange(places[0]);
        
     }
