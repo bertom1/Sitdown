@@ -1,8 +1,8 @@
-import { BsThreeDotsVertical } from 'react-icons/bs'
+// import { BsThreeDotsVertical } from 'react-icons/bs'
 import { useEvent, useInvite } from '../../Context/EventContext'
 import { useNavigate } from 'react-router-dom'
-import { Menu, MenuItem, MenuButton, MenuGroup } from '@szhsin/react-menu'
-import "@szhsin/react-menu/dist/index.css";
+// import { Menu, MenuItem, MenuButton, MenuGroup } from '@szhsin/react-menu'
+// import "@szhsin/react-menu/dist/index.css";
 import Celebration from '../../image/celebration.svg'
 import '../Event Card/EventCard.css'
 
@@ -11,9 +11,9 @@ const InviteCard = ({invite, id}) => {
     const {delInv} = useInvite()
     const {addEvent} = useEvent()
     const nav = useNavigate()
-    const layerButton = (e) => {
-        e.stopPropagation()
-    }
+    // const layerButton = (e) => {
+    //     e.stopPropagation()
+    // }
     const handleAdd = (e) => {
         e.stopPropagation()
         addEvent(invite)
@@ -36,7 +36,9 @@ const InviteCard = ({invite, id}) => {
         const timeStr = `${hr % 12 !== 0 ? hr % 12 : '12'}:${timeArray[1]} ${end}`
         return timeStr
     }
-    return <div className='w-full h-48 border-2 border-black rounded-xl px-2 mb-2 relative' onClick={()=>nav(`/invite/${id}`, {replace: true})}>
+    return <div className='card-width h-48 m-auto shadow-lg rounded-xl px-2 mb-2 relative bg-white' 
+                onClick={()=>nav(`/invite/${id}`, {replace: true})}
+            >
             <div className='flex justify-center'>
                 <h3 className='max-w-xs truncate'>{invite.title}</h3>
             </div>

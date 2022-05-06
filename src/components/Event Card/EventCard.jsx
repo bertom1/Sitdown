@@ -30,7 +30,7 @@ const EventCard = ({event, id}) => {
     return (
       <div
         onClick={() => nav(`/event/${id}`, { replace: true })}
-        className="w-full h-40 border-2 border-black rounded-xl px-2 mb-2 relative"
+        className="card-width h-40 shadow-lg m-auto rounded-xl px-2 mb-2 relative bg-white"
       >
         <div className="flex justify-center py-1.5">
           <h3 className="max-w-xs truncate">
