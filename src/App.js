@@ -40,7 +40,7 @@ function App() {
             <BrowserRouter basename='/sitdown.github.io'>
               <TopNav />
               <Routes>
-                <Route path="/" element={<EventContainer />} />
+                <Route path="/home" element={<EventContainer />} />
                 <Route path="/event/:id" element={<EventPage />} />
                 <Route path="/invite/:id" element={<InvitePage />} />
                 <Route path="/add" element={<AddPage />} />
