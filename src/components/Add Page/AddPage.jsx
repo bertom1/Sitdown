@@ -189,7 +189,7 @@ class MasterForm extends Component {
     const {addEvent} = this.context
     const redirect = this.state.redirect;
        if (redirect === true) {
-         return <Navigate to="/" />;
+         return <Navigate to="/home" />;
        }
     return (
       <div className="w-full block">
