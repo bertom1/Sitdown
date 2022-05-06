@@ -1,96 +1,99 @@
-import { Component } from "react";
-import "./Chatbox.css";
+import { react, useState, useParams } from "react";
+import { useNavigate } from "react-router-dom";
+// import "./Chatbox.css";
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import {
+  Search,
+  ConversationList,
+  Conversation,
+  Avatar,
+  AvatarGroup,
+} from "@chatscope/chat-ui-kit-react";
+import zoeIco from "../../image/person.jpeg";
+import lillyIco from "../../image/person.jpeg";
+import joeIco from "../../image/person5.jpeg";
+import emilyIco from "../../image/person2.jpeg";
+import kaiIco from "../../image/person3.jpeg";
+import akaneIco from "../../image/person.jpeg";
+import eliotIco from "../../image/person.jpeg";
+import patrikIco from "../../image/person.jpeg";
 
-class Chat extends Component {
-
-  closeForm(){
-    return false;
-  }
+const Chat = () => {
   
-  render(){
-    return (
-      <div className="w-full h-full overflow-scroll">
-        <h2>Event Chat</h2>
-        <p>
-          Click on the button at the bottom of this page to open the chat form.
-        </p>
+  const nav = useNavigate();
+  return (
+    <>
+      <div className="overflow-auto text-left">
+        <Search placeholder="Search..." className="bg-pink" />
 
-        <h2>Chat Messages</h2>
+        <Conversation
+          name="Rachel's Birthday"
+          lastSenderName="Lilly"
+          info="Can't wait!"
+          onClick={() => {
+            nav(`/conversation`, { replace: true });
+          }}
+          // className="w-full"
+          unreadDot
+        >
+          <AvatarGroup size="sm">
+            <Avatar src={lillyIco} name="Lilly" />
+            <Avatar src={joeIco} name="Joe" />
+            <Avatar src={emilyIco} name="Emily" />
+            <Avatar src={kaiIco} name="Kai" />
+          </AvatarGroup>
+        </Conversation>
 
-        <div className="container">
-          <img
-            src="/w3images/bandmember.jpg"
-            alt="Avatar"
-            className="chatImage"
-            // style="width:100%;"
-          />
-          <p>Hello. How are you today?</p>
-          <span className="time-right">11:00</span>
-        </div>
+        <Conversation
+          name="Joe"
+          lastSenderName="Joe"
+          info="Yes i can do it for you"
+        >
+          <Avatar src={joeIco} name="Joe" status="dnd" />
+        </Conversation>
 
-        <div className="container darker">
-          <img
-            src="/w3images/avatar_g2.jpg"
-            alt="Avatar"
-            className="right chatImage"
-            // style="width:100%;"
-          />
-          <p>Hey! I'm fine. Thanks for asking!</p>
-          <span className="time-left">11:01</span>
-        </div>
+        <Conversation
+          name="Emily"
+          lastSenderName="Emily"
+          info="Yes i can do it for you"
+        >
+          <Avatar src={emilyIco} name="Emily" status="available" />
+        </Conversation>
 
-        <div className="container">
-          <img
-            src="/w3images/bandmember.jpg"
-            alt="Avatar"
-            className="chatImage"
-            // style="width:100%;"
-          />
-          <p>Sweet! So, what do you wanna do today?</p>
-          <span className="time-right">11:02</span>
-        </div>
+        <Conversation
+          name="Kai"
+          lastSenderName="Kai"
+          info="Yes i can do it for you"
+        >
+          <Avatar src={kaiIco} name="Kai" status="unavailable" />
+        </Conversation>
 
-        <div className="container darker">
-          <img
-            src="/w3images/avatar_g2.jpg"
-            alt="Avatar"
-            className="right chatImage"
+        <Conversation
+          name="Akane"
+          lastSenderName="Akane"
+          info="Yes i can do it for you"
+        >
+          <Avatar src={akaneIco} name="Akane" status="eager" />
+        </Conversation>
 
-            // style="width:100%;"
-          />
-          <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-          <span className="time-left">11:05</span>
-        </div>
+        <Conversation
+          name="Eliot"
+          lastSenderName="Eliot"
+          info="Yes i can do it for you"
+        >
+          <Avatar src={eliotIco} name="Eliot" status="away" />
+        </Conversation>
 
-        <button className="open-button" onClick={console.log("hello")}>
-          Chat
-        </button>
-
-        <div className="chat-popup" id="myForm">
-          <form action="/action_page.php" className="form-container">
-            <h1>Chat</h1>
-
-            <label for="msg">
-              <b>Message</b>
-            </label>
-            <textarea
-              placeholder="Type message.."
-              name="msg"
-              required
-            ></textarea>
-
-            <button type="submit" className="btn">
-              Send
-            </button>
-            <button type="button" className="btn cancel" onClick={this.closeForm}>
-              Close
-            </button>
-          </form>
-        </div>
+        <Conversation
+          name="Zoe"
+          lastSenderName="Zoe"
+          info="Yes i can do it for you"
+        >
+          <Avatar src={zoeIco} name="Zoe" status="dnd" />
+        </Conversation>
       </div>
-    );
-  }   
-  
-}
+    </>
+  );
+};
 
 export default Chat;

@@ -178,7 +178,7 @@ class MasterForm extends Component {
     // If the current step is the last step, then render the "submit" button
     if (currentStep > 3) {
       return (
-        <button type="submit" className="bg-lightpink rounded-md px-2 py-1 " onClick={this.handleSubmit}>Submit</button>
+        <button type="submit" className="bg-lightpink rounded-md px-2 py-1 " >Submit</button>
       );
     }
     // ...else render nothing
@@ -199,7 +199,7 @@ class MasterForm extends Component {
             <MultiStepProgressBar currentStep={this.state.currentStep} />
           </div>
           <div />
-          <div className="py-50">
+          <form onSubmit={this.handleSubmit} className="py-50">
             <Step1
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
@@ -229,12 +229,12 @@ class MasterForm extends Component {
               state={this.state}
               previous={this._prev}
             />
-          </div>
+            {this.submitButton}
+          </form>
         </div>
         <div>
           {this.previousButton}
           {this.nextButton}
-          {this.submitButton}
         </div>
       </div>
     );

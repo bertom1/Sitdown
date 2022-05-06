@@ -11,6 +11,7 @@ import { InvitePage } from './components/Invite Page'
 import { ProfilePage } from "./components/Profile Page";
 import { AddPage } from "./components/Add Page";
 import { Chat } from "./components/Chat Page";
+import { Conversation } from "./components/Chat Page";
 const e = {
   id: 0,
   title: `Random Event`,
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/invite/:id" element={<InvitePage />} />
                 <Route path="/add" element={<AddPage />} />
                 <Route path="/chat" element={<Chat />} />
+                <Route path="/conversation" element={<Conversation />} />
                 <Route path="/profile" element={<ProfilePage />} />
               </Routes>
               <BottomNav />
