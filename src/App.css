@@ -38,5 +38,6 @@
 }
 
 .active{
-  background-color: rgb(192, 53, 92);
+  background-color: transparent;
+  color: rgb(148 163 184);
 }
