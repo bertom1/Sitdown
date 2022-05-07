@@ -39,7 +39,10 @@ class MasterForm extends Component {
 
   // Use the submitted data to set the state
   handleChange(event) {
-    const { name, value } = event.target;
+    let { name, value } = event.currentTarget;
+    if (name === 'currentStep') {
+      value = Number(value)
+    }
     this.setState({
       [name]: value,
     });

@@ -16,7 +16,7 @@ const Step4 = (props) => {
           {props.state.address}
           <br></br>
           {props.state.description}
-          <button>
+          <button type='button' name='currentStep' value={1} onClick={props.handleChange}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-4 h-4 absolute bottom-1.5 right-1.5"
@@ -65,7 +65,7 @@ const Step4 = (props) => {
               </li>
             ))}
           </ul>
-          <button onClick={props.previous}>
+          <button type='button' name='currentStep' value={2} onClick={props.handleChange}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 absolute bottom-1.5 right-1.5"

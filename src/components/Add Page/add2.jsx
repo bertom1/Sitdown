@@ -42,6 +42,7 @@ const Step2 = (props) => {
         </form>
         <button
           className="bg-lightpink px-2 py-1 rounded-md m-2 "
+          type='button'
           onClick={props.handleAddNewPerson}
         >
           add
@@ -106,7 +107,7 @@ const Step2 = (props) => {
           ))}
         </ol>
         <div className="grid justify-items-center">
-          <button onClick={()=>{navigator.clipboard.writeText("http://localhost:3000/sitdown.github.io/event/0");}} className="w-3/4 px-4 py-2 border-2 border-slate-200 text-left text-sm bg-slate-200 rounded-md mb-2 active:bg-gray-400 hover:cursor-pointer flex justify-between">
+          <button type='button' onClick={()=>{navigator.clipboard.writeText("http://localhost:3000/sitdown.github.io/event/0");}} className="w-3/4 px-4 py-2 border-2 border-slate-200 text-left text-sm bg-slate-200 rounded-md mb-2 active:bg-gray-400 hover:cursor-pointer flex justify-between">
             <u color="blue"> personal-event-link-to-share</u>
 
             <svg

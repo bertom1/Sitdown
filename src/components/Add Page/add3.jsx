@@ -79,6 +79,7 @@ const Step3 = (props) => {
         <button
           className="bg-lightpink px-2 py-1 rounded-md m-2 "
           onClick={props.handleAddNewItem}
+          type='button'
         >
           add
           <svg
