@@ -71,7 +71,7 @@ const EventPage = () => {
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to leave this event?')){
             delEvent(id)
-            nav('/', {replace: true})
+            nav('/home', {replace: true})
         }
     }
     const handleEdit = e => {

@@ -27,12 +27,12 @@ const InvitePage = () => {
     const handleAdd = () => {
         addEvent(invite)
         delInv(id)
-        nav('/', {replace: true})
+        nav('/home', {replace: true})
     }
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to decline the invite? \nYou will need to request a new invite if you decide change your mind after deleting.')){
             delInv(id)
-            nav('/', {replace: true})
+            nav('/home', {replace: true})
         }
     }
     useEffect(() => {
