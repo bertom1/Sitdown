@@ -10,7 +10,7 @@ export function useUser() {
 
 export const UserProvider = ({children}) => {
     const [user, setUser] = useState({
-        userName: 'First Last',
+        userName: 'UserName',
         bio: 'Description about You',
         profileImage: ''
     })

@@ -5,6 +5,7 @@ import { GoogleMap, Marker } from '@react-google-maps/api'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEvent } from '../../Context/EventContext'
+import { useUser } from '../../Context/UserContext'
 import { SB } from '../searchbox'
 
 const EventPage = () => {
@@ -21,12 +22,13 @@ const EventPage = () => {
     }
     const nav = useNavigate()
     const {events, delEvent, removeItem, addItem, addOther, invUser, updateEvent } = useEvent()
+    const { user } = useUser()
     let { id } = useParams()
     id = Number(id)
     const [event, setEvent] = useState(e)
     const [selectedItem, setSelectedItem] = useState('')
     const [otherInput, setOther] = useState('')
-    const [user, setUser] = useState('')
+    const [guest, setGuest] = useState('')
     const [editedEvent, setEditedEvent] = useState({...event})
     const [edit, setEdit] = useState(false)
     useEffect(() => {
@@ -116,7 +118,7 @@ const EventPage = () => {
         </div>
         <div>
             <p>My Items: </p>
-            <div className='flex justify-center' >Item: 
+            <div className='flex justify-center' > item: 
                 {
                     selectedItem === '-1' ? <>
                     <div className='relative' >
@@ -168,29 +170,32 @@ const EventPage = () => {
                     {
                         <form className='flex' onSubmit={(e) => {
                             e.preventDefault()
-                            invUser(id, user)
-                            setUser('')
+                            invUser(id, guest)
+                            setGuest('')
                         }} >
                         <label className='flex'> 
                             Invite User:
                             <div className='relative' >
-                                <input value={user} className='border-2 border-black ml-1'type='text' onChange={(e) => setUser(e.target.value)}/>
+                                <input value={guest} className='border-2 border-black ml-1'type='text' onChange={(e) => setGuest(e.target.value)}/>
                                 <AiOutlineClose onClick={() =>{
-                                    setUser('')
+                                    setGuest('')
                                 }} className='absolute right-1 top-1' size={20}/>
                             </div>
                         </label>
-                        <button type='submit' className='bg-gray-400 rounded-lg ml-1 px-2 py-1 disabled:opacity-80' disabled={user === '' ? true : false}>
+                        <button type='submit' className='bg-gray-400 rounded-lg ml-1 px-2 py-1 disabled:opacity-80' disabled={guest === '' ? true : false}>
                             Send
                         </button>
                     </form>
                     }
                     </div>
+                    <div className='text-left ml-4'>
+                        {user.userName} (You)
                     {
                         event.guests.map((guest, index) => {
-                            return <div className='text-left ml-4' key={index}>{`${guest.name}:  ${guest.items.join(', ')}`}</div>
+                            return <div className='text-left' key={index}>{`${guest.name}:  ${guest.items.join(', ')}`}</div>
                         })
                     }
+                    </div>
                 </div>
         </div> 
         <div className='mt-5'>

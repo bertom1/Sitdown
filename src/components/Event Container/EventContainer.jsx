@@ -9,7 +9,7 @@ const EventContainer = () => {
     const [toggleInvite, setToggleInvite] = useState(false)
     const {events} = useEvent()
     const {invites} = useInvite()
-    return <div className='flex flex-col flex-1 bg-gray-300'>
+    return <div className='h-full flex flex-col'>
         <div className='pl-2 flex items-center py-1 bg-white' onClick={() => setToggleInvite(!toggleInvite)}>
             {toggleInvite ?
                 <BsChevronUp size={20} className='mt-1' />
@@ -20,7 +20,7 @@ const EventContainer = () => {
                 {toggleInvite ? 'Hide' : 'Show'} Invited Events ({invites.length})
             </p>
         </div>
-        <div className='pt-2'>
+        <div className='pt-2 bg-gray-300 flex-auto'>
             {toggleInvite && <div>
                 {invites.length > 0 ? invites.map((inv, index) => {
                     return <InviteCard key={index} invite={inv} id={index} />
