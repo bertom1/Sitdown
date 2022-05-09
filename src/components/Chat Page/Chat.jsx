@@ -1,6 +1,6 @@
 import { react, useState, useParams } from "react";
 import { useNavigate } from "react-router-dom";
-// import "./Chatbox.css";
+import "./chat.scss";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   Search,
@@ -9,14 +9,14 @@ import {
   Avatar,
   AvatarGroup,
 } from "@chatscope/chat-ui-kit-react";
-import zoeIco from "../../image/person.jpeg";
+import zoeIco from "../../image/person7.jpeg";
 import lillyIco from "../../image/person.jpeg";
-import joeIco from "../../image/person5.jpeg";
-import emilyIco from "../../image/person2.jpeg";
-import kaiIco from "../../image/person3.jpeg";
-import akaneIco from "../../image/person.jpeg";
-import eliotIco from "../../image/person.jpeg";
-import patrikIco from "../../image/person.jpeg";
+import joeIco from "../../image/person2.jpeg";
+import emilyIco from "../../image/person5.jpeg";
+import kaiIco from "../../image/person6.jpeg";
+import akaneIco from "../../image/person3.jpeg";
+import eliotIco from "../../image/person4.jpeg";
+
 
 const Chat = () => {
   
@@ -24,12 +24,12 @@ const Chat = () => {
   return (
     <>
       <div className="overflow-auto text-left">
-        <Search placeholder="Search..." className="bg-pink" />
+        <Search placeholder="Search..." />
 
         <Conversation
           name="Rachel's Birthday"
-          lastSenderName="Lilly"
-          info="Can't wait!"
+          lastSenderName="Joe"
+          info="imho :P"
           onClick={() => {
             nav(`/conversation`, { replace: true });
           }}
@@ -53,17 +53,22 @@ const Chat = () => {
         </Conversation>
 
         <Conversation
-          name="Emily"
+          name="Holloween Bash"
           lastSenderName="Emily"
-          info="Yes i can do it for you"
+          info="me and Matt are coming as gangsters"
         >
-          <Avatar src={emilyIco} name="Emily" status="available" />
+          <AvatarGroup size="sm">
+            <Avatar src={eliotIco} name="Lilly" />
+            <Avatar src={joeIco} name="Joe" />
+            <Avatar src={akaneIco} name="Kai" />
+            <Avatar src={emilyIco} name="Emily" />
+          </AvatarGroup>
         </Conversation>
 
         <Conversation
           name="Kai"
           lastSenderName="Kai"
-          info="Yes i can do it for you"
+          info="of course!"
         >
           <Avatar src={kaiIco} name="Kai" status="unavailable" />
         </Conversation>
@@ -71,7 +76,7 @@ const Chat = () => {
         <Conversation
           name="Akane"
           lastSenderName="Akane"
-          info="Yes i can do it for you"
+          info="can't wait!"
         >
           <Avatar src={akaneIco} name="Akane" status="eager" />
         </Conversation>
@@ -79,7 +84,7 @@ const Chat = () => {
         <Conversation
           name="Eliot"
           lastSenderName="Eliot"
-          info="Yes i can do it for you"
+          info="gimme a sec"
         >
           <Avatar src={eliotIco} name="Eliot" status="away" />
         </Conversation>
@@ -87,7 +92,7 @@ const Chat = () => {
         <Conversation
           name="Zoe"
           lastSenderName="Zoe"
-          info="Yes i can do it for you"
+          info="lol totally np"
         >
           <Avatar src={zoeIco} name="Zoe" status="dnd" />
         </Conversation>

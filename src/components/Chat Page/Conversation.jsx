@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { ChatContainer, ConversationHeader, Avatar, InfoButton, MessageList,
 MessageSeparator, Message, AvatarGroup, TypingIndicator, MessageInput } from "@chatscope/chat-ui-kit-react";
 import zoeIco from "../../image/person.jpeg"
-import joeIco from "../../image/person4.jpeg";
-import emilyIco from "../../image/person2.jpeg";
-import kaiIco from "../../image/person3.jpeg";
+import lillyIco from "../../image/person.jpeg";
+import joeIco from "../../image/person2.jpeg";
+import emilyIco from "../../image/person5.jpeg";
+import kaiIco from "../../image/person6.jpeg";
+import akaneIco from "../../image/person3.jpeg";
+import eliotIco from "../../image/person.jpeg";
+import "./chat.scss"
 
 const Conversation =()=>{
 const [messageInputValue, setMessageInputValue] = useState("");
@@ -44,123 +48,107 @@ const nav = useNavigate();
      <MessageList typingIndicator={<TypingIndicator content="Zoe is typing" />}>
        <Message
          model={{
-           message: "Hello my friend",
+           message: "Votes for vanilla or chocolate cake...",
            sentTime: "15 mins ago",
            sender: "Zoe",
            direction: "incoming",
            position: "single",
-           className: "bg-color-pink",
          }}
        >
          <Avatar src={kaiIco} name="Zoe" />
        </Message>
-
+       
+         <Message
+           model={{
+             message: "Chocolate!",
+             sentTime: "15 mins ago",
+             sender: "Patrik",
+             direction: "outgoing",
+             position: "single",
+           }}
+           className="hello"
+         />
+   
        <Message
          model={{
-           message: "Hello my friend",
-           sentTime: "15 mins ago",
-           sender: "Patrik",
-           direction: "outgoing",
-           position: "single",
-         }}
-       />
-       <Message
-         model={{
-           message: "Hello my friend",
-           sentTime: "15 mins ago",
-           sender: "Zoe",
-           direction: "incoming",
-           position: "first",
-         }}
-         avatarSpacer
-       />
-       <Message
-         model={{
-           message: "Hello my friend",
+           message: "CHOCOLATE",
            sentTime: "15 mins ago",
            sender: "Zoe",
            direction: "incoming",
-           position: "normal",
-         }}
-         avatarSpacer
-       />
-       <Message
-         model={{
-           message: "Hello my friend",
-           sentTime: "15 mins ago",
-           sender: "Zoe",
-           direction: "incoming",
-           position: "normal",
-         }}
-         avatarSpacer
-       />
-       <Message
-         model={{
-           message: "Hello my friend",
-           sentTime: "15 mins ago",
-           sender: "Zoe",
-           direction: "incoming",
-           position: "last",
+        
          }}
        >
-         <Avatar src={zoeIco} name="Zoe" />
-       </Message>
-
+         <Avatar src={akaneIco} name="Zoe" />
+        </Message>
        <Message
          model={{
-           message: "Hello my friend",
-           sentTime: "15 mins ago",
-           sender: "Patrik",
-           direction: "outgoing",
-           position: "first",
-           className:"hello",
-         }}
-       />
-       <Message
-         model={{
-           message: "Hello my friend",
-           sentTime: "15 mins ago",
-           sender: "Patrik",
-           direction: "outgoing",
-           position: "normal",
-         }}
-       />
-       <Message
-         model={{
-           message: "Hello my friend",
-           sentTime: "15 mins ago",
-           sender: "Patrik",
-           direction: "outgoing",
-           position: "normal",
-         }}
-       />
-       <Message
-         model={{
-           message: "Hello my friend",
-           sentTime: "15 mins ago",
-           sender: "Patrik",
-           direction: "outgoing",
-           position: "last",
-         }}
-       />
-
-       <Message
-         model={{
-           message: "Hello my friend",
+           message: "Vanilla rules!",
            sentTime: "15 mins ago",
            sender: "Zoe",
            direction: "incoming",
-           position: "first",
+           position: "normal",
+         }}
+         
+       >
+        <Avatar src={emilyIco} name="Zoe" />
+        </Message>
+       <Message
+         model={{
+           message: "Chocolate all the way",
+           sentTime: "15 mins ago",
+           sender: "Zoe",
+           direction: "incoming",
+           position: "normal",
+         }}>
+          <Avatar src={joeIco} name="Zoe" />
+       </Message>
+       <Message
+         model={{
+           message: "Vanilla my friend",
+           sentTime: "15 mins ago",
+           sender: "Zoe",
+           direction: "incoming",
+           position: "normal",
+         }}
+       >
+         <Avatar src={eliotIco} name="Zoe" />
+       </Message>
+       <Message
+         model={{
+           message: "I think the birthday gal likes chocolate",
+           sentTime: "15 mins ago",
+           sender: "Patrik",
+           direction: "outgoing",
+           position: "normal",
+         }}
+       />
+       <Message
+         model={{
+           message: "so...",
+           sentTime: "15 mins ago",
+           sender: "Patrik",
+           direction: "outgoing",
+           position: "normal",
+         }}
+       />
+
+       <Message
+         model={{
+           message: "she has great taste",
+           sentTime: "15 mins ago",
+           sender: "Zoe",
+           direction: "incoming",
+         
          }}
          avatarSpacer
        />
        <Message
          model={{
-           message: "Hello my friend",
+           message: "imho :P",
            sentTime: "15 mins ago",
            sender: "Zoe",
            direction: "incoming",
-           position: "last",
+           position: "normal",
          }}
        >
          <Avatar src={joeIco} name="Zoe" />

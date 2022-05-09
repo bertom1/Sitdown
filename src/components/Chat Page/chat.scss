@@ -1,0 +1,55 @@
+.cs-message.cs-message--incoming .cs-message__content {
+    //border-radius: 0 .7em .7em 0;
+    background-color: rgba(255,
+    183,
+    183,.4);
+}
+
+.cs-message.cs-message--outgoing .cs-message__content {
+    color: rgba(0, 0, 0, .87);
+    background-color: rgba(255,
+        183,
+        183, .8);
+    border-radius: .7em 0 0 .7em;
+}
+
+.cs-message-input .cs-message-input__content-editor-wrapper {
+    background-color: rgba(255,
+        230,
+        230);
+}
+
+.cs-message-input .cs-message-input__content-editor-wrapper .cs-message-input__content-editor{
+    background-color: rgba(255,
+        230,
+        230);
+}
+
+.overflow-auto .cs-search .cs-search__input{
+    background-color: rgba(255,
+    230,
+    230);
+} 
+.overflow-auto .cs-search{
+    background-color: rgba(255,
+    230,
+    230);
+}
+.cs-chat-container .cs-conversation-header{
+   
+    background-color: rgba(255,
+        230,
+        230);
+}
+
+.cs-chat-container .cs-conversation-header .cs-conversation-header__user-name{
+    background-color: rgba(255,
+        230,
+        230);
+}
+
+.cs-chat-container .cs-conversation-header .cs-conversation-header__info {
+    background-color: rgba(255,
+        230,
+        230);
+}
