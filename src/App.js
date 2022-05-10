@@ -33,30 +33,30 @@ const e = {
 const scriptLibraries = ["places"]
 function App() {
   return (
-    <div className="App">
-    
+    <div className="App h-screen">
+
       <LoadScript googleMapsApiKey="AIzaSyAQzP0U-AipYSrDUlPxgV8uwQJvEQj1Paw" libraries={scriptLibraries}>
-      <UserProvider >
-        <EventProvider>
-          <InviteProvider>
-            <BrowserRouter basename='/sitdown.github.io'>
-              <TopNav />
-              <Routes>
-                <Route path="/home" element={<EventContainer />} />
-                <Route path="/event/:id" element={<EventPage />} />
-                <Route path="/invite/:id" element={<InvitePage />} />
-                <Route path="/add" element={<AddPage />} />
-                <Route path="/chat" element={<Chat />} />
-                <Route path="/conversation" element={<Conversation />} />
-                <Route path="/profile" element={<ProfilePage />} />
-              </Routes>
-              <BottomNav />
-            </BrowserRouter>
-          </InviteProvider>
-        </EventProvider>
-      </UserProvider>
+        <UserProvider >
+          <EventProvider>
+            <InviteProvider>
+              <BrowserRouter basename='/sitdown.github.io'>
+                <TopNav />
+                <Routes>
+                  <Route path="/home" element={<EventContainer />} />
+                  <Route path="/event/:id" element={<EventPage />} />
+                  <Route path="/invite/:id" element={<InvitePage />} />
+                  <Route path="/add" element={<AddPage />} />
+                  <Route path="/chat" element={<Chat />} />
+                  <Route path="/conversation" element={<Conversation />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                </Routes>
+                <BottomNav />
+              </BrowserRouter>
+            </InviteProvider>
+          </EventProvider>
+        </UserProvider>
       </LoadScript>
-      <NotificationContainer/>
+      <NotificationContainer />
     </div>
   );
 }

@@ -32,12 +32,17 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.active{
+.active {
   background-color: transparent;
   color: rgb(148 163 184);
+}
+
+.event {
+  height: calc(100vh - 140px)
 }
