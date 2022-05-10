@@ -9,11 +9,8 @@ import { NotificationManager } from "react-notifications"
 
 const InvitePage = () => {
     const createNotification = ({type, action}) => {
-        console.log('notification')
-        NotificationManager.clear()
         switch (action) {
             case 'accept':
-                console.log('accept')
                 NotificationManager.success('', `${type} accepted`, 3000)
                 break
             case 'decline':
