@@ -107,12 +107,26 @@ class MasterForm extends Component {
   handleSubmit = (event) => {
      event.preventDefault();
     const { addEvent } = this.context;
-   
-    addEvent({ ...this.state });
-    this.setState({
-      ...this.state,
-      redirect: true,
-    })
+    let blankfields = []
+    if (this.state.title === ''){
+      blankfields.push('Event title')
+    }
+    if (this.state.date === ''){
+      blankfields.push('Event date')
+    }
+    if (this.state.time === 0){
+      blankfields.push('Event time')
+    }
+   if (blankfields.length !== 0) {
+     alert(`Please complete the following fields.\n ${blankfields.join(', ')}`)
+   }
+   else{
+     addEvent({ ...this.state });
+     this.setState({
+       ...this.state,
+       redirect: true,
+     })
+   }
 
   };
 
@@ -207,6 +221,10 @@ class MasterForm extends Component {
               currentStep={this.state.currentStep}
               handleChange={this.handleChange}
               handleLocationChange={this.handleLocationChange}
+              title={this.state.title}
+              date={this.state.date}
+              time={this.state.time}
+              description={this.state.description}
             />
             <Step2
               currentStep={this.state.currentStep}
