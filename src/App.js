@@ -12,6 +12,8 @@ import { ProfilePage } from "./components/Profile Page";
 import { AddPage } from "./components/Add Page";
 import { Chat } from "./components/Chat Page";
 import { Conversation } from "./components/Chat Page";
+import { NotificationContainer } from 'react-notifications'
+import 'react-notifications/lib/notifications.css';
 const e = {
   id: 0,
   title: `Random Event`,
@@ -54,6 +56,7 @@ function App() {
         </EventProvider>
       </UserProvider>
       </LoadScript>
+      <NotificationContainer/>
     </div>
   );
 }

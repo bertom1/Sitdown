@@ -7,7 +7,7 @@ import Celebration from '../../image/celebration.svg'
 import '../Event Card/EventCard.css'
 
 //replace hardcoded text with data from mock DB
-const InviteCard = ({invite, id}) => {
+const InviteCard = ({invite, id, notificationHandler}) => {
     const {delInv} = useInvite()
     const {addEvent} = useEvent()
     const nav = useNavigate()
@@ -18,11 +18,20 @@ const InviteCard = ({invite, id}) => {
         e.stopPropagation()
         addEvent(invite)
         delInv(id)
+        notificationHandler({
+            type: 'invite',
+            action: 'accept'
+        })
     }
     const handleDelete = (e) => {
         e.stopPropagation()
-        if (window.confirm('Are you sure you want to decline the invite? \nYou will need to request a new invite if you decide change your mind after deleting.'))
-        delInv(id)
+        if (window.confirm('Are you sure you want to decline the invite?')){
+            delInv(id)
+            notificationHandler({
+                type: 'Invite',
+                action: 'decline'
+            })
+        }
     }
     const formatDate = (date) => {
         const dateArray = date.split('-')

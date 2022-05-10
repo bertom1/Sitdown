@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useEvent } from '../../Context/EventContext'
 import { useUser } from '../../Context/UserContext'
 import { SB } from '../searchbox'
+import { NotificationManager } from "react-notifications"
 
 const EventPage = () => {
     const e = {
@@ -19,6 +20,9 @@ const EventPage = () => {
         address:'loading address',
         geolocation:{lat: 0, lng: 0},
         description: `...`
+    }
+    const createNotification = ({type, action}) => {
+        NotificationManager.error('', `${type} removed`, 3000)
     }
     const nav = useNavigate()
     const {events, delEvent, removeItem, addItem, addOther, invUser, updateEvent } = useEvent()
@@ -71,6 +75,10 @@ const EventPage = () => {
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to leave this event?')){
             delEvent(id)
+            createNotification({
+                type: 'Event',
+                action: 'delete'
+            })
             nav('/home', {replace: true})
         }
     }

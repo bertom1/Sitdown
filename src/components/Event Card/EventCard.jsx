@@ -9,12 +9,21 @@ import Celebration from '../../image/celebration.svg'
 import './EventCard.css'
 import { useEvent } from '../../Context/EventContext';
 
-const EventCard = ({event, id}) => {
+const EventCard = ({event, id, notificationHandler}) => {
     const nav = useNavigate()
     const {delEvent} = useEvent()
     const layerButton = (e) => {
         e.stopPropagation()
     }
+    const handleDelete = () => {
+      if (window.confirm('Are you sure you want to decline the invite? \nYou will need to request a new invite if you decide change your mind after deleting.')){
+        delEvent(id)
+        notificationHandler({
+            type: 'Event',
+            action: 'delete'
+        })
+    }
+  }
     const formatDate = (date) => {
         const dateArray = date.split('-')
         const dateString = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`
@@ -49,7 +58,7 @@ const EventCard = ({event, id}) => {
             }
           >
             <MenuGroup>
-              <MenuItem onClick={() => delEvent(id)}>Leave Event</MenuItem>
+              <MenuItem onClick={handleDelete}>Leave Event</MenuItem>
             </MenuGroup>
           </Menu>
         </div>

@@ -5,13 +5,25 @@ import { GoLocation } from 'react-icons/go'
 import { GoogleMap, Marker } from '@react-google-maps/api'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { NotificationManager } from "react-notifications"
 
 const InvitePage = () => {
-    const { invites, delInv } = useInvite()
-    const { addEvent } = useEvent()
-    const nav = useNavigate();
-    let { id } = useParams()
-    id = Number(id)
+    const createNotification = ({type, action}) => {
+        console.log('notification')
+        NotificationManager.clear()
+        switch (action) {
+            case 'accept':
+                console.log('accept')
+                NotificationManager.success('', `${type} accepted`, 3000)
+                break
+            case 'decline':
+                NotificationManager.error('', `${type} declined`, 3000)
+                break
+            default:
+                console.log('scary error message')
+                break
+        }
+    }
     const loader = {
         title: `Loading event`,
         date: 'mm/dd/yyyy',
@@ -23,15 +35,28 @@ const InvitePage = () => {
         geolocation:{lat: 0, lng: 0},
         description: `...`
     }
+    const { invites, delInv } = useInvite()
+    const { addEvent } = useEvent()
+    const nav = useNavigate();
+    let { id } = useParams()
+    id = Number(id)
     const [invite, setInvite] = useState(loader)
     const handleAdd = () => {
         addEvent(invite)
         delInv(id)
+        createNotification({
+            type: 'Invite',
+            action: 'accept'
+        })
         nav('/home', {replace: true})
     }
     const handleDelete = () => {
-        if (window.confirm('Are you sure you want to decline the invite? \nYou will need to request a new invite if you decide change your mind after deleting.')){
+        if (window.confirm('Are you sure you want to decline the invite?')){
             delInv(id)
+            createNotification({
+                type: 'Invite',
+                action: 'decline'
+            })
             nav('/home', {replace: true})
         }
     }
