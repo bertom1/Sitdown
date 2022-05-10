@@ -6,7 +6,7 @@ const TopNav = () => {
   return (
     <nav className="bg-white mx-1.5 my-1.5 px-2 sm:px-4 py-2.5 rounded">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <Link to="/" className="flex items-center">
+        <Link to="/home" className="flex items-center">
           <img src={logo} className="h-6 sm:h-9" alt="Sitdown Logo" />
         </Link>
 
