@@ -119,24 +119,26 @@ const InvitePage = () => {
             </div>
             </div>
         </div>
-        <div>
+        <div className='flex flex-col justify-center'>
+            <div className='flex justify-center'>
             Items: 
-            <select className='ml-1'>
-                <option value='' selected disabled hidden>Available Item</option>
-                {
-                    invite.items.map((item, index) => {
-                        return <option value={index} key={index} > 
-                            {item}
-                        </option>
-                    })
-                }
-                <option >Other (Please specify)</option>
-            </select>
-            <div className='mt-2'>
+                <select className='ml-1'>
+                    <option value='' selected disabled hidden>Available Item</option>
+                    {
+                        invite.items.map((item, index) => {
+                            return <option value={index} key={index} > 
+                                {item}
+                            </option>
+                        })
+                    }
+                    <option >Other (Please specify)</option>
+                </select>
+            </div>
+            <div className='m-auto mt-2'>
                 <p>Guests:</p>
                 {
                     invite.guests.map((guest, index) => {
-                        return <div className='text-left ml-4' key={index}>{`${guest.name}:  ${guest.items.join(', ')}`}</div>
+                        return <div className='text-left' key={index}>{`${guest.name}:  ${guest.items.join(', ')}`}</div>
                     })
                 }
             </div>

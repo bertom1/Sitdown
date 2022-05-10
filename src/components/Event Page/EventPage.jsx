@@ -126,11 +126,12 @@ const EventPage = () => {
         </div>
         <div>
             <p>My Items: </p>
-            <div className='flex justify-center' > item: 
+            <div className='flex justify-center' > 
+                <p className='mr-1'>Item:</p> 
                 {
                     selectedItem === '-1' ? <>
                     <div className='relative' >
-                        <input className='border-2 border-black ml-1'type='text' onChange={(e) => setOther(e.target.value)}/>
+                        <input className='border-2 border-black 'type='text' onChange={(e) => setOther(e.target.value)}/>
                         <AiOutlineClose onClick={() =>{
                             setSelectedItem('')
                             setOther('')
@@ -142,8 +143,8 @@ const EventPage = () => {
                         setOther('')
                     }}>Add Item</button>
                     </>
-                    :<>
-                    <select className='ml-1' value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
+                    :<div className=''>
+                    <select className='' value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
                         <option value='' selected disabled hidden>Add an Item</option>
                         {
                             event.items.map((item, index) => {
@@ -159,7 +160,7 @@ const EventPage = () => {
                         setSelectedItem('')
                     }}>Add Item
                     </button>
-                    </>
+                    </div>
                 }
                 </div>
                 <div className='m-auto flex mt-4 overflow-x-auto max-w-xs'>
@@ -174,35 +175,35 @@ const EventPage = () => {
                 </div>
                 <div className='mt-2'>
                     <p>Guests:</p>
-                    <div className='flex ml-5'>
-                    {
-                        <form className='flex' onSubmit={(e) => {
-                            e.preventDefault()
-                            invUser(id, guest)
-                            setGuest('')
-                        }} >
-                        <label className='flex'> 
-                            Invite User:
-                            <div className='relative' >
-                                <input value={guest} className='border-2 border-black ml-1'type='text' onChange={(e) => setGuest(e.target.value)}/>
-                                <AiOutlineClose onClick={() =>{
-                                    setGuest('')
-                                }} className='absolute right-1 top-1' size={20}/>
-                            </div>
-                        </label>
-                        <button type='submit' className='bg-gray-400 rounded-lg ml-1 px-2 py-1 disabled:opacity-80' disabled={guest === '' ? true : false}>
-                            Send
-                        </button>
-                    </form>
-                    }
-                    </div>
-                    <div className='text-left ml-4'>
-                        {user.userName} (You)
-                    {
-                        event.guests.map((guest, index) => {
-                            return <div className='text-left' key={index}>{`${guest.name}:  ${guest.items.join(', ')}`}</div>
-                        })
-                    }
+                    <div className='flex flex-col justify-center'>
+                        <div className='flex justify-center'>
+                            <form className='flex' onSubmit={(e) => {
+                                e.preventDefault()
+                                invUser(id, guest)
+                                setGuest('')
+                            }} >
+                            <label className='flex'> 
+                                Invite User:
+                                <div className='relative' >
+                                    <input value={guest} className='border-2 border-black ml-1'type='text' onChange={(e) => setGuest(e.target.value)}/>
+                                    <AiOutlineClose onClick={() =>{
+                                        setGuest('')
+                                    }} className='absolute right-1 top-1' size={20}/>
+                                </div>
+                            </label>
+                            <button type='submit' className='bg-gray-400 rounded-lg ml-1 px-2 py-1 disabled:opacity-80' disabled={guest === '' ? true : false}>
+                                Send
+                            </button>
+                        </form>
+                        </div>
+                        <div className='m-auto'>
+                            <p className='text-left'>{user.userName} (You)</p>
+                        {
+                            event.guests.map((guest, index) => {
+                                return <div className='text-left' key={index}>{`${guest.name}:  ${guest.items.join(', ')}`}</div>
+                            })
+                        }
+                        </div>
                     </div>
                 </div>
         </div> 
