@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import TopNav from "./components/TopNav";
 import BottomNav from "./components/BottomNav";
 import { EventContainer } from "./components/Event Container";
@@ -42,6 +42,7 @@ function App() {
               <BrowserRouter basename='/sitdown.github.io'>
                 <TopNav />
                 <Routes>
+                  <Route index element={<Navigate replace to='/home' />} />
                   <Route path="/home" element={<EventContainer />} />
                   <Route path="/event/:id" element={<EventPage />} />
                   <Route path="/invite/:id" element={<InvitePage />} />
