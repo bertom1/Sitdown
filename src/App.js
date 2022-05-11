@@ -42,7 +42,6 @@ function App() {
               <BrowserRouter basename='/sitdown.github.io'>
                 <TopNav />
                 <Routes>
-                  <Route index element={<Navigate replace to='/home' />} />
                   <Route path="/home" element={<EventContainer />} />
                   <Route path="/event/:id" element={<EventPage />} />
                   <Route path="/invite/:id" element={<InvitePage />} />
@@ -50,6 +49,7 @@ function App() {
                   <Route path="/chat" element={<Chat />} />
                   <Route path="/conversation" element={<Conversation />} />
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route path='/' element={<Navigate replace to='/home' />} />
                 </Routes>
                 <BottomNav />
               </BrowserRouter>
