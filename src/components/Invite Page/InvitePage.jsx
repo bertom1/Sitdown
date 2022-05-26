@@ -2,7 +2,7 @@ import Celebration from '../../image/celebration.svg'
 import { useEvent, useInvite } from '../../Context/EventContext'
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
-import { GoogleMap, Marker } from '@react-google-maps/api'
+import { Map } from '../Map'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { NotificationManager } from "react-notifications"
@@ -60,19 +60,6 @@ const InvitePage = () => {
     useEffect(() => {
         setInvite(invites[id])
     }, [invites, id])
-    const Map = ({loc}) => 
-    {
-        return <GoogleMap 
-            mapContainerStyle={{
-                height: "125px",
-                width: "275px"
-            }}
-            center={loc}
-            zoom={15}
-            >
-                <Marker position={loc} />
-            </GoogleMap>
-    }
     const formatAddr = (addr) => {
         const firstComma = addr.indexOf(',')
         const street = addr.substring(0, firstComma)

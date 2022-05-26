@@ -39,7 +39,7 @@ function App() {
         <UserProvider >
           <EventProvider>
             <InviteProvider>
-              <BrowserRouter basename='/sitdown.github.io'>
+              <BrowserRouter basename='/sitdown'>
                 <TopNav />
                 <Routes>
                   <Route path="/home" element={<EventContainer />} />

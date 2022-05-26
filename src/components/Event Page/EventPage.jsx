@@ -2,12 +2,13 @@ import Celebration from '../../image/celebration.svg'
 import { AiOutlineClose, AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
 import { GoogleMap, Marker } from '@react-google-maps/api'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEvent } from '../../Context/EventContext'
 import { useUser } from '../../Context/UserContext'
 import { SB } from '../searchbox'
 import { NotificationManager } from "react-notifications"
+import { Map } from '../Map'
 
 const EventPage = () => {
     const e = {
@@ -39,18 +40,6 @@ const EventPage = () => {
         setEvent(events[id])
         setEditedEvent(event)
     }, [events, id, event])
-    const Map = ({ loc }) => {
-        return <GoogleMap
-            mapContainerStyle={{
-                height: "125px",
-                width: "275px"
-            }}
-            center={loc}
-            zoom={15}
-        >
-            <Marker position={loc} />
-        </GoogleMap>
-    }
     const formatAddr = (addr) => {
         const firstComma = addr.indexOf(',')
         const street = addr.substring(0, firstComma)
